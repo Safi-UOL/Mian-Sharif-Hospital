@@ -1,0 +1,192 @@
+import { Link } from "react-router-dom";
+import heroImage from "../assets/images/hero.jpeg";
+import drAhmad from "../assets/images/dr-ahmad.jpg";
+import drAsif from "../assets/images/dr-asif.jpg";
+import drHafsa from "../assets/images/dr-hafsa.avif";
+import drRabia from "../assets/images/dr-Rabia.jpg";   
+import logo from "../assets/images/hospital-Logo.png";
+
+export default function Home() {
+  return (
+    <div className="pt-30 pb-0 text-gray-900 dark:text-gray-100">
+
+      {/* TOP LOGO + NAME SECTION */}
+      <section className="px-6 md:px-20 text-center mb-12">
+        <div className="flex flex-col items-center justify-center mb-3">
+          <img
+            src={logo}
+            alt="Hospital Logo"
+            className="w-24 h-24 object-contain animate-soft-blink"
+          />
+        </div>
+
+        <h1 className="text-5xl font-bold animate-soft-blink tracking-tight mb-2">
+          Mian Sharif Hospital
+        </h1>
+
+        <p className="text-base max-w-xl mx-auto opacity-80 leading-relaxed">
+          Providing trusted, patient-focused medical care with experienced specialists.
+        </p>
+      </section>
+
+      {/* HERO SECTION */}
+      <section className="px-6 md:px-20 text-center mb-12">
+        <h1 className="text-5xl font-semibold mb-4 leading-tight animate-soft-blink">
+          Providing Reliable & Compassionate Healthcare
+        </h1>
+
+        <p className="text-lg max-w-2xl mx-auto opacity-90 mb-8">
+          We focus on safe, ethical, and clinically accurate medical services — 
+          supported by experienced specialists.
+        </p>
+
+        <div className="flex justify-center">
+          <Link
+            to="/contact#contact-details"
+            className="px-8 py-3 bg-gray-900 hover:bg-gray-700 
+                       text-white rounded-full shadow-lg inline-block
+                       dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-black"
+          >
+            Book Appointment
+          </Link>
+        </div>
+
+        {/* FINAL HERO IMAGE — Slight Vertical Size */}
+        <div
+          className="mt-8 w-full max-w-3xl mx-auto h-72 rounded-2xl shadow-xl 
+                     overflow-hidden border border-white/40 dark:border-blue-900/40 
+                     bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl"
+        >
+          <img
+            src={heroImage}
+            alt="Hospital Hero"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </section>
+
+      {/* SERVICES SECTION */}
+      <section className="px-6 md:px-20 mb-12">
+        <h2 className="text-4xl font-semibold text-center mb-10">
+          Our Clinical Services
+        </h2>
+
+        <div className="grid md:grid-cols-4 gap-8">
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <h3 className="text-xl font-medium mb-2">Pediatric Care</h3>
+            <p className="opacity-90">
+              Child examinations, vaccinations, neonatal care, routine treatments.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <h3 className="text-xl font-medium mb-2">Gynecology & Obstetrics</h3>
+            <p className="opacity-90">
+              Maternal care, antenatal evaluations, gynecological procedures.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <h3 className="text-xl font-medium mb-2">Cardiology</h3>
+            <p className="opacity-90">
+              ECG, cardiac risk assessment, hypertension & diabetes management.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <h3 className="text-xl font-medium mb-2">Dermatology</h3>
+            <p className="opacity-90">
+              Acne care, pigmentation, laser treatment, PRP, hydrafacial.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* DOCTOR TEAM SECTION */}
+      <section className="px-6 md:px-20 mb-12">
+        <h2 className="text-4xl font-semibold text-center mb-10">
+          Meet Our Specialist Team
+        </h2>
+
+        <div className="grid md:grid-cols-4 gap-10">
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
+              <img src={drAsif} alt="Dr. Asif" className="w-full h-full object-cover" />
+            </div>
+            <h3 className="text-xl font-medium">Dr. Asif Mahmood</h3>
+            <p className="text-blue-600 dark:text-blue-300 text-sm mb-2">
+             Specialist(MBBS,MPH,MPhil)
+            </p>
+            <p className="opacity-80 text-sm">25+ years experience</p>
+          </div>
+
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
+              <img src={drRabia} alt="Dr. Rabia" className="w-full h-full object-cover" />
+            </div>
+            <h3 className="text-xl font-medium">Dr. Rabia Manzoor</h3>
+            <p className="text-pink-600 dark:text-pink-400 text-sm mb-2">Gynecologist(MBBS)</p>
+            <p className="opacity-80 text-sm">15 years experience</p>
+          </div>
+
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
+              <img src={drAhmad} alt="Dr. Ahmad" className="w-full h-full object-cover" />
+            </div>
+            <h3 className="text-xl font-medium">Dr. Ahmad Hammad</h3>
+            <p className="text-red-600 dark:text-red-400 text-sm mb-2">Cardiologist (MBBS, FCPS)</p>
+            <p className="opacity-80 text-sm">Heart specialist</p>
+          </div>
+
+          <div className="p-6 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40 backdrop-blur-xl">
+            <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
+              <img src={drHafsa} alt="Dr. Hafsa" className="w-full h-full object-cover" />
+            </div>
+            <h3 className="text-xl font-medium">Dr. Hafsa Hammad</h3>
+            <p className="text-purple-600 dark:text-purple-400 text-sm mb-2">Skin Specialist (MBBS)</p>
+            <p className="opacity-80 text-sm">Dermatology care</p>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="px-6 md:px-20 mb-12">
+        <h2 className="text-4xl font-semibold text-center mb-10">Why Patients Trust Us</h2>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          <div className="p-8 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40">
+            <h3 className="text-xl font-medium mb-2">Experienced Doctors</h3>
+            <p className="opacity-80">Years of clinical excellence.</p>
+          </div>
+
+          <div className="p-8 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40">
+            <h3 className="text-xl font-medium mb-2">Standard Medical Practice</h3>
+            <p className="opacity-80">Evidence-based diagnosis.</p>
+          </div>
+
+          <div className="p-8 rounded-xl shadow-xl bg-white/50 dark:bg-gray-800/40">
+            <h3 className="text-xl font-medium mb-2">Patient-Focused Approach</h3>
+            <p className="opacity-80">Comfort, communication & trust.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT CTA – Small Gap Before Footer */}
+      <section className="px-6 md:px-20 text-center mb-6">
+        <h2 className="text-4xl font-semibold mb-4">Need Medical Consultation?</h2>
+        <p className="text-lg opacity-90 mb-6">
+          Contact us to book appointments or get medical advice.
+        </p>
+
+        <Link
+          to="/contact#contact-details"
+          className="px-10 py-3 bg-gray-900 hover:bg-gray-700 text-white rounded-full shadow-lg inline-block
+                     dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-black"
+        >
+          Contact Us
+        </Link>
+      </section>
+
+    </div>
+  );
+}
