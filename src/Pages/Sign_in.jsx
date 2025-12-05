@@ -1,4 +1,4 @@
-import hospitalCareImg from "../assets/images/Hospital-Care.jpg"; // <-- ADDED
+import hospitalCareImg from "../assets/images/hospital-Care.jpg"; // <-- ADDED
 
 export default function SignIn() {
   return (

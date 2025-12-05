@@ -15,15 +15,19 @@ import Disclaimer from "./Pages/Disclaimer";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      basename={
+        import.meta.env.MODE === "production"
+          ? "/Mian-Sharif-Hospital"
+          : "/"
+      }
+    >
       <ScrollToTop />
 
       <div className="flex flex-col min-h-screen">
-
-        {/* NAVBAR */}
+        
         <Navbar />
 
-        {/* MAIN CONTENT — NO EXTRA GAP BELOW */}
         <main className="flex-grow pt-20 pb-0">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -38,7 +42,6 @@ export default function App() {
           </Routes>
         </main>
 
-        {/* FOOTER — STICKS TO BOTTOM WITH ZERO GAP */}
         <Footer />
       </div>
     </BrowserRouter>
