@@ -7,8 +7,13 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // GitHub Pages home paths
-  const homePaths = ["/", "/Mian-Sharif-Hospital/"];
+  // All valid paths for each page (Localhost + GitHub Pages)
+  const PATHS = {
+    home: ["/", "/Mian-Sharif-Hospital/"],
+    about: ["/about", "/Mian-Sharif-Hospital/about"],
+    contact: ["/contact", "/Mian-Sharif-Hospital/contact"],
+    faq: ["/faq", "/Mian-Sharif-Hospital/faq"],
+  };
 
   useEffect(() => {
     if (theme === "dark") document.documentElement.classList.add("dark");
@@ -17,36 +22,30 @@ export default function Navbar() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // ⭐ SAME PAGE = REFRESH | DIFFERENT PAGE = NAVIGATE
-  const handleNavClick = (e, path) => {
+  // ⭐ SAME PAGE = refresh | DIFFERENT PAGE = navigate
+  const handleNavClick = (e, page) => {
     e.preventDefault();
+
     const current = location.pathname;
+    const validPaths = PATHS[page];
 
-    // --- HOME PAGE CASE ---
-    if (path === "/" && homePaths.includes(current)) {
+    // SAME PAGE → REFRESH
+    if (validPaths.includes(current)) {
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => window.location.reload(), 300);
+      setTimeout(() => window.location.reload(), 250);
       return;
     }
 
-    // --- SAME PAGE REFRESH (ABOUT / CONTACT / FAQ) ---
-    if (current === path) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => window.location.reload(), 300);
-      return;
-    }
-
-    // --- DIFFERENT PAGE (NO REFRESH) ---
-    navigate(path);
+    // DIFFERENT PAGE → Normal navigation
+    navigate(validPaths[0]); // Localhost path (React Router handles base)
   };
 
-  // Styling active tab
   const getNavClass = ({ isActive }) =>
     isActive
       ? "pb-1 font-semibold text-black dark:text-white border-b-2 border-black dark:border-white"
       : "pb-1 text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition";
 
-  // Correct HOME URL for logo click
+  // Correct home URL for logo
   const HOME_URL =
     import.meta.env.MODE === "production"
       ? "/Mian-Sharif-Hospital/"
@@ -56,7 +55,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/30 dark:bg-gray-900/20 shadow-sm border-b border-white/40 dark:border-gray-700/40">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        {/* LOGO — Always refresh and scroll to top */}
+        {/* LOGO — Always refresh + scroll to top */}
         <a
           href={HOME_URL}
           onClick={(e) => {
@@ -74,13 +73,13 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* NAVIGATION LINKS */}
+        {/* NAV LINKS */}
         <div className="flex gap-6 text-lg font-medium">
 
           <NavLink
             to="/"
             className={getNavClass}
-            onClick={(e) => handleNavClick(e, "/")}
+            onClick={(e) => handleNavClick(e, "home")}
             end
           >
             Home
@@ -89,7 +88,7 @@ export default function Navbar() {
           <NavLink
             to="/about"
             className={getNavClass}
-            onClick={(e) => handleNavClick(e, "/about")}
+            onClick={(e) => handleNavClick(e, "about")}
           >
             About
           </NavLink>
@@ -97,7 +96,7 @@ export default function Navbar() {
           <NavLink
             to="/contact"
             className={getNavClass}
-            onClick={(e) => handleNavClick(e, "/contact")}
+            onClick={(e) => handleNavClick(e, "contact")}
           >
             Contact
           </NavLink>
@@ -105,16 +104,14 @@ export default function Navbar() {
           <NavLink
             to="/faq"
             className={getNavClass}
-            onClick={(e) => handleNavClick(e, "/faq")}
+            onClick={(e) => handleNavClick(e, "faq")}
           >
             FAQ
           </NavLink>
-
         </div>
 
-        {/* RIGHT SIDE BUTTONS */}
+        {/* RIGHT BUTTONS */}
         <div className="flex items-center gap-4">
-
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="px-4 py-2 rounded-full text-sm font-medium bg-gray-900 text-white dark:bg-yellow-400 dark:text-black shadow-md hover:shadow-lg transition"
@@ -135,7 +132,6 @@ export default function Navbar() {
           >
             Sign Up
           </Link>
-
         </div>
       </div>
     </nav>
