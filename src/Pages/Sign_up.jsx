@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import signupImg from "../assets/images/sign-up.jpg"; // <-- LOCAL IMAGE
 
 export default function Sign_up() {
@@ -96,15 +97,15 @@ export default function Sign_up() {
               Create Account
             </button>
 
-            {/* LOGIN LINK */}
+            {/* LOGIN LINK FIXED */}
             <p className="text-center text-sm pt-4">
               Already have an account?{" "}
-              <a
-                href="/signin"
+              <Link
+                to="/signin"
                 className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
               >
                 Sign In
-              </a>
+              </Link>
             </p>
 
           </div>

@@ -14,18 +14,14 @@ import Privacy from "./Pages/Privacy";
 import Disclaimer from "./Pages/Disclaimer";
 
 export default function App() {
+  const isProd = import.meta.env.MODE === "production";
+
   return (
-    <BrowserRouter
-      basename={
-        import.meta.env.MODE === "production"
-          ? "/Mian-Sharif-Hospital"
-          : "/"
-      }
-    >
+   <BrowserRouter basename="/Mian-Sharif-Hospital">
       <ScrollToTop />
 
       <div className="flex flex-col min-h-screen">
-        
+
         <Navbar />
 
         <main className="flex-grow pt-20 pb-0">

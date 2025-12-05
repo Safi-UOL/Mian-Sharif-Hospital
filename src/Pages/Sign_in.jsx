@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import hospitalCareImg from "../assets/images/hospital-Care.jpg"; // <-- ADDED
 
 export default function SignIn() {
@@ -19,7 +20,7 @@ export default function SignIn() {
             and your personalized healthcare dashboard.
           </p>
 
-          {/* LOCAL IMAGE ADDED */}
+          {/* LOCAL IMAGE */}
           <img
             src={hospitalCareImg}
             alt="Hospital Care"
@@ -84,12 +85,12 @@ export default function SignIn() {
           {/* Create Account */}
           <p className="text-center text-sm">
             Don’t have an account?{" "}
-            <a
-              href="/signup"
+            <Link
+              to="/signup"
               className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
             >
               Create Account
-            </a>
+            </Link>
           </p>
 
         </div>
