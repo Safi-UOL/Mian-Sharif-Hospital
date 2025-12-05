@@ -7,37 +7,39 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Base URL for GitHub Pages
-  const base = import.meta.env.MODE === "production"
-    ? "/Mian-Sharif-Hospital"
-    : "";
-
-  // Full paths for all pages (local + GitHub pages)
-  const paths = {
-    home: base + "/",
-    about: base + "/about",
-    contact: base + "/contact",
-    faq: base + "/faq",
-  };
+  const homePaths = ["/", "/Mian-Sharif-Hospital/"];
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // SAME PAGE = refresh ; DIFFERENT PAGE = navigate
-  const handleNavClick = (e, fullPath) => {
+  // ⭐ UNIVERSAL HANDLER (NO 404 ON SAME PAGE)
+  const handleNavClick = (e, path) => {
     e.preventDefault();
 
-    const current = base + location.pathname; // normalize current path
+    const current = location.pathname;
 
-    if (current === fullPath) {
-      window.location.href = fullPath; // refresh correctly
+    // HOME special handling
+    if (path === "/" && homePaths.includes(current)) {
+      navigate(path);      // React handles it
+      window.scrollTo(0, 0);
       return;
     }
 
-    // Navigate by removing base prefix for React Router
-    navigate(fullPath.replace(base, ""));
+    // All other pages → React reload without GitHub 404
+    if (current === path) {
+      navigate(path);      // internal SPA render
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    // Normal navigation
+    navigate(path);
   };
 
   const getNavClass = ({ isActive }) =>
@@ -49,10 +51,16 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/30 dark:bg-gray-900/20 shadow-sm border-b border-white/40 dark:border-gray-700/40">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        {/* LOGO — ALWAYS REFRESH HOME */}
+        {/* LOGO — NO 404 EVER */}
         <a
-          href={paths.home}
-          onClick={(e) => handleNavClick(e, paths.home)}
+          href={import.meta.env.MODE === "production" 
+                ? "/Mian-Sharif-Hospital/" 
+                : "/"}
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/");
+            window.scrollTo(0, 0);
+          }}
           className="flex items-center gap-3 hover:opacity-80 transition"
         >
           <img src={logo} className="w-10 h-10" alt="Hospital Logo" />
@@ -64,44 +72,25 @@ export default function Navbar() {
         {/* NAVIGATION */}
         <div className="flex gap-6 text-lg font-medium">
 
-          <NavLink
-            to="/"
-            className={getNavClass}
-            onClick={(e) => handleNavClick(e, paths.home)}
-            end
-          >
+          <NavLink to="/" className={getNavClass} onClick={(e) => handleNavClick(e, "/")} end>
             Home
           </NavLink>
 
-          <NavLink
-            to="/about"
-            className={getNavClass}
-            onClick={(e) => handleNavClick(e, paths.about)}
-          >
+          <NavLink to="/about" className={getNavClass} onClick={(e) => handleNavClick(e, "/about")}>
             About
           </NavLink>
 
-          <NavLink
-            to="/contact"
-            className={getNavClass}
-            onClick={(e) => handleNavClick(e, paths.contact)}
-          >
+          <NavLink to="/contact" className={getNavClass} onClick={(e) => handleNavClick(e, "/contact")}>
             Contact
           </NavLink>
 
-          <NavLink
-            to="/faq"
-            className={getNavClass}
-            onClick={(e) => handleNavClick(e, paths.faq)}
-          >
+          <NavLink to="/faq" className={getNavClass} onClick={(e) => handleNavClick(e, "/faq")}>
             FAQ
           </NavLink>
-
         </div>
 
         {/* RIGHT BUTTONS */}
         <div className="flex items-center gap-4">
-
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="px-4 py-2 rounded-full text-sm font-medium bg-gray-900 text-white dark:bg-yellow-400 dark:text-black shadow-md hover:shadow-lg transition"
@@ -109,10 +98,7 @@ export default function Navbar() {
             {theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode"}
           </button>
 
-          <Link
-            to="/signin"
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white shadow-md hover:bg-blue-700 transition"
-          >
+          <Link to="/signin" className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white shadow-md hover:bg-blue-700 transition">
             Sign In
           </Link>
 
@@ -122,7 +108,6 @@ export default function Navbar() {
           >
             Sign Up
           </Link>
-
         </div>
       </div>
     </nav>
