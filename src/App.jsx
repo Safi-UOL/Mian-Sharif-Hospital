@@ -14,10 +14,8 @@ import Privacy from "./Pages/Privacy";
 import Disclaimer from "./Pages/Disclaimer";
 
 export default function App() {
-  const isProd = import.meta.env.MODE === "production";
-
   return (
-   <BrowserRouter basename="/Mian-Sharif-Hospital">
+    <BrowserRouter basename="/Mian-Sharif-Hospital">
       <ScrollToTop />
 
       <div className="flex flex-col min-h-screen">
@@ -35,6 +33,9 @@ export default function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
+
+            {/* ⭐ IMPORTANT: Prevent 404 on GitHub Pages */}
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
 
