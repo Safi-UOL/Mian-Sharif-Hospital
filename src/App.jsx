@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
 import ScrollToTop from "./components/layouts/ScrollToTop";
@@ -15,16 +15,23 @@ import Disclaimer from "./Pages/Disclaimer";
 
 export default function App() {
   return (
-    <BrowserRouter basename="/Mian-Sharif-Hospital">
+    <>
       <ScrollToTop />
 
       <div className="flex flex-col min-h-screen">
 
         <Navbar />
 
-        <main className="flex-grow pt-20 pb-0">
+        <main className="flex-grow pt-0 md:pt-20 pb-0">
           <Routes>
+
+            {/* Default Home */}
             <Route path="/" element={<Home />} />
+
+            {/* /home → redirect to / */}
+            <Route path="/home" element={<Navigate to="/" replace />} />
+
+            {/* Pages */}
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
@@ -34,13 +41,14 @@ export default function App() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
 
-            {/* ⭐ IMPORTANT: Prevent 404 on GitHub Pages */}
-            <Route path="*" element={<Home />} />
+            {/* Catch-all → Home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+
           </Routes>
         </main>
 
         <Footer />
       </div>
-    </BrowserRouter>
+    </>
   );
 }

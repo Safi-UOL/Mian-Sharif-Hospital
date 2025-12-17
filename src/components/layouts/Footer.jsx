@@ -12,7 +12,8 @@ export default function Footer() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
+let a =7
+console.log(a) 
   return (
     <footer
       className="
@@ -24,6 +25,8 @@ export default function Footer() {
         py-4
       "
     >
+
+      {a}
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
 
         {/* LEFT — LOGO + COPYRIGHT */}
