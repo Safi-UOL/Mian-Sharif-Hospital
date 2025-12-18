@@ -71,12 +71,9 @@ export default function Navbar() {
             Appointment
           </NavLink>
 
-          {/* Assignment SPA */}
+          {/* Assignment SPA - Single Patients Page */}
           <NavLink to="/assignment/patients" className={getNavClass}>
             Patients
-          </NavLink>
-          <NavLink to="/assignment/create" className={getNavClass}>
-            Add Patient
           </NavLink>
         </div>
 
@@ -125,9 +122,6 @@ export default function Navbar() {
 
           <NavLink to="/assignment/patients" className={getNavClass}>
             Patients
-          </NavLink>
-          <NavLink to="/assignment/create" className={getNavClass}>
-            Add Patient
           </NavLink>
 
           <hr className="border-gray-300 dark:border-gray-700" />
