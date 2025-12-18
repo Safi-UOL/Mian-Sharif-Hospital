@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ScrollReveal from "../components/common/ScrollReveal";
 import signupImg from "../assets/Images/sign-up.jpg";
 
 export default function Sign_up() {
@@ -8,6 +9,7 @@ export default function Sign_up() {
       <div className="w-full max-w-4xl grid md:grid-cols-2 gap-12">
 
         {/* LEFT INFO CARD */}
+        <ScrollReveal direction="left">
         <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
             p-10 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
 
@@ -29,8 +31,10 @@ export default function Sign_up() {
             />
           </div>
         </div>
+        </ScrollReveal>
 
         {/* RIGHT SIGN UP FORM */}
+        <ScrollReveal direction="right">
         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl 
             p-10 rounded-2xl shadow-2xl border border-white/50 dark:border-gray-700">
 
@@ -110,6 +114,7 @@ export default function Sign_up() {
 
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

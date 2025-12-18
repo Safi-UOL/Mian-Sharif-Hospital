@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import ScrollReveal from "../components/common/ScrollReveal";
 
 export default function Disclaimer() {
 
@@ -11,6 +12,7 @@ export default function Disclaimer() {
     <div className="pt-30 pb-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER */}
+      <ScrollReveal direction="left">
       <section className="text-center max-w-3xl mx-auto mb-16">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Medical Disclaimer
@@ -21,8 +23,10 @@ export default function Disclaimer() {
           diagnosis, consultation, or emergency care.
         </p>
       </section>
+      </ScrollReveal>
 
       {/* DISCLAIMER CARD */}
+      <ScrollReveal direction="right">
       <section className="max-w-5xl mx-auto px-6">
         <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
                         p-10 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
@@ -98,6 +102,7 @@ export default function Disclaimer() {
 
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

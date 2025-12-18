@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ScrollReveal from "../common/ScrollReveal";
 
 export default function Faq() {
   const faqs = [
@@ -52,6 +53,7 @@ export default function Faq() {
   <div className="pt-30 pb-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER */}
+      <ScrollReveal direction="left">
       <section className="text-center max-w-3xl mx-auto mb-14">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Frequently Asked Questions
@@ -61,22 +63,25 @@ export default function Faq() {
           feel free to contact our support team for guidance.
         </p>
       </section>
+      </ScrollReveal>
 
       {/* FAQ CARDS */}
       <section className="max-w-4xl mx-auto space-y-6">
         {faqs.map((item, i) => (
+          <ScrollReveal key={i} direction={i % 2 === 0 ? "left" : "right"}>
           <div
-            key={i}
             className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-6 
             rounded-xl shadow-lg border border-white/40 dark:border-gray-700"
           >
             <h3 className="text-xl font-medium mb-2">{item.q}</h3>
             <p className="opacity-80 leading-relaxed">{item.a}</p>
           </div>
+          </ScrollReveal>
         ))}
       </section>
 
       {/* ADDITIONAL INFO */}
+      <ScrollReveal direction="right">
       <section className="mt-20 max-w-4xl mx-auto">
         <h2 className="text-3xl font-semibold mb-6 text-center">
           Additional Information
@@ -102,8 +107,10 @@ export default function Faq() {
 
         </div>
       </section>
+      </ScrollReveal>
 
       {/* CTA */}
+      <ScrollReveal direction="left">
       <section className="mt-20 text-center max-w-3xl mx-auto">
         <h2 className="text-3xl font-semibold mb-4">Still Have Questions?</h2>
         <p className="text-lg opacity-90 mb-6">
@@ -120,6 +127,7 @@ export default function Faq() {
           Contact Support
         </Link>
       </section>
+      </ScrollReveal>
 
     </div>
   );

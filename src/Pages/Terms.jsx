@@ -1,16 +1,21 @@
+import ScrollReveal from "../components/common/ScrollReveal";
+
 export default function TermsOfUse() {
   return (
     <div className="pt-30 pb-20 px-6 md:px-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER */}
+      <ScrollReveal direction="left">
       <div className="max-w-4xl mx-auto text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Terms of Use</h1>
         <p className="opacity-80 text-lg">
           Please read these terms carefully before using our website or services.
         </p>
       </div>
+      </ScrollReveal>
 
       {/* CONTENT CARD */}
+      <ScrollReveal direction="right">
       <div className="max-w-4xl mx-auto bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
                       p-10 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700 
                       leading-relaxed space-y-8">
@@ -142,6 +147,8 @@ export default function TermsOfUse() {
         </section>
 
       </div>
+      </ScrollReveal>
+
     </div>
   );
 }

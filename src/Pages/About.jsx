@@ -1,3 +1,4 @@
+import ScrollReveal from "../components/common/ScrollReveal";
 import drhammad from "../assets/Images/dr-hammad.jpg";
 import drAsif from "../assets/Images/Asif.jpg";
 import drRabia from "../assets/Images/Rabia.jpg";
@@ -8,21 +9,24 @@ export default function About() {
     <div className="pt-30 pb-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER SECTION */}
-      <section className="text-center max-w-3xl mx-auto mb-16">
-        <h1 className="text-4xl font-semibold mb-4 tracking-tight">
-          About Our Hospital
-        </h1>
-        <p className="text-lg opacity-90 leading-relaxed">
-          Our hospital is focused on providing reliable, safe, and clinically sound
-          healthcare services. We follow evidence-based medical practices under the
-          supervision of experienced specialists dedicated to patient wellbeing.
-        </p>
-      </section>
+      <ScrollReveal direction="left">
+        <section className="text-center max-w-3xl mx-auto mb-16">
+          <h1 className="text-4xl font-semibold mb-4 tracking-tight">
+            About Our Hospital
+          </h1>
+          <p className="text-lg opacity-90 leading-relaxed">
+            Our hospital is focused on providing reliable, safe, and clinically sound
+            healthcare services. We follow evidence-based medical practices under the
+            supervision of experienced specialists dedicated to patient wellbeing.
+          </p>
+        </section>
+      </ScrollReveal>
 
       {/* DOCTOR CARDS */}
       <section className="grid md:grid-cols-2 gap-10 mb-20">
 
        {/* DOCTOR 1 — DR ASIF MAHMOOD */}
+<ScrollReveal direction="left">
 <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
   p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
 
@@ -50,9 +54,10 @@ export default function About() {
     and monitoring of pediatric services.
   </p>
 </div>
-
+</ScrollReveal>
 
         {/* DOCTOR 2 — DR RABIA MANZOOR */}
+        <ScrollReveal direction="right">
         <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
           p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
 
@@ -80,8 +85,10 @@ export default function About() {
             procedures, antenatal care, and patient counseling meet medical standards.
           </p>
         </div>
+        </ScrollReveal>
 
         {/* DR AHMAD SECTION */}
+        <ScrollReveal direction="left">
         <div
           className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
              p-8 rounded-xl shadow-lg border border-white/40 dark:border-gray-700"
@@ -111,8 +118,10 @@ export default function About() {
             acute and chronic cardiovascular issues.
           </p>
         </div>
+        </ScrollReveal>
 
         {/* DOCTOR 4 — DR HAFSA HAMMAD */}
+        <ScrollReveal direction="right">
         <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
           p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
 
@@ -138,10 +147,12 @@ export default function About() {
             dermatological procedures for patients of all ages.
           </p>
         </div>
+        </ScrollReveal>
 
       </section>
 
       {/* MISSION SECTION */}
+      <ScrollReveal direction="left">
       <section className="max-w-4xl mx-auto mb-20">
         <h2 className="text-3xl font-semibold mb-6 text-center">Our Mission</h2>
         <p className="leading-relaxed text-lg opacity-90">
@@ -151,8 +162,10 @@ export default function About() {
           that patients receive proper guidance and medical support.
         </p>
       </section>
+      </ScrollReveal>
 
       {/* JOURNEY SECTION */}
+      <ScrollReveal direction="right">
       <section className="mb-20">
         <h2 className="text-3xl font-semibold mb-10 text-center">Our Clinical Journey</h2>
 
@@ -184,8 +197,10 @@ export default function About() {
 
         </div>
       </section>
+      </ScrollReveal>
 
       {/* CLOSING SECTION */}
+      <ScrollReveal direction="left">
       <section className="text-center max-w-3xl mx-auto">
         <h2 className="text-3xl font-semibold mb-6">Why Choose Us?</h2>
         <p className="leading-relaxed text-lg opacity-90">
@@ -194,6 +209,7 @@ export default function About() {
           stable and reliable care for all patients.
         </p>
       </section>
+      </ScrollReveal>
 
     </div>
   );

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ScrollReveal from "../components/common/ScrollReveal";
 import hospitalCareImg from "../assets/Images/Hospital-Care.jpg";
 
 export default function SignIn() {
@@ -8,6 +9,7 @@ export default function SignIn() {
       <div className="w-full max-w-5xl grid md:grid-cols-2 gap-10">
 
         {/* LEFT SIDE — Information Card */}
+        <ScrollReveal direction="left">
         <div className="bg-white/40 dark:bg-gray-800/60 backdrop-blur-xl 
           rounded-2xl shadow-2xl p-8 border border-white/30 dark:border-gray-700 flex flex-col">
 
@@ -27,8 +29,10 @@ export default function SignIn() {
             className="rounded-xl shadow-lg object-cover w-full h-64"
           />
         </div>
+        </ScrollReveal>
 
         {/* RIGHT SIDE — Sign In Form */}
+        <ScrollReveal direction="right">
         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl 
           border border-white/50 dark:border-gray-700 shadow-2xl p-10 rounded-2xl w-full">
 
@@ -94,6 +98,7 @@ export default function SignIn() {
           </p>
 
         </div>
+        </ScrollReveal>
       </div>
     </div>
   );

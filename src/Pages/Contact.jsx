@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import ScrollReveal from "../components/common/ScrollReveal";
 
 export default function Contact() {
 
@@ -11,6 +12,7 @@ export default function Contact() {
   <div className="pt-30 pb-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER */}
+      <ScrollReveal direction="left">
       <section className="text-center max-w-3xl mx-auto mb-16">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Contact Our Hospital
@@ -20,11 +22,13 @@ export default function Contact() {
           feel free to reach out to us using the contact details below.
         </p>
       </section>
+      </ScrollReveal>
 
       {/* CONTACT GRID */}
       <section className="grid md:grid-cols-2 gap-12 mb-20">
 
         {/* LEFT SIDE — CONTACT DETAILS */}
+        <ScrollReveal direction="left">
         <div
           id="contact-details"
           className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
@@ -73,8 +77,10 @@ export default function Contact() {
 
           </div>
         </div>
+        </ScrollReveal>
 
         {/* RIGHT SIDE — CONTACT FORM */}
+        <ScrollReveal direction="right">
         <div
           className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
           p-8 rounded-2xl shadow-lg border border-white/40 dark:border-gray-700"
@@ -127,10 +133,12 @@ export default function Contact() {
             </button>
           </form>
         </div>
+        </ScrollReveal>
 
       </section>
 
       {/* MAP SECTION */}
+      <ScrollReveal direction="left">
       <section className="max-w-5xl mx-auto mb-20">
         <h2 className="text-3xl font-medium text-center mb-6">Location Map</h2>
 
@@ -146,6 +154,7 @@ export default function Contact() {
           ></iframe>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* DEPARTMENT CONTACTS */}
       <section className="max-w-5xl mx-auto mb-20">
