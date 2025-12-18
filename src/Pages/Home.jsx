@@ -1,12 +1,11 @@
 
 import { Link } from "react-router-dom"; 
-import heroImage from "../assets/images/hero.jpeg";
-import drAhmad from "../assets/images/dr-ahmad.jpg";
-import drAsif from "../assets/images/dr-asif.jpg";
-import drHafsa from "../assets/images/dr-hafsa.avif";
-import drRabia from "../assets/images/dr-Rabia.jpg";   
-import logo from "../assets/images/hospital-logo.png";
-
+import heroImage from "../assets/Images/hero.jpeg";
+import drAhmad from "../assets/Images/dr-ahmad.jpg";
+import drAsif from "../assets/Images/dr-asif.jpg";
+import drHafsa from "../assets/Images/dr-hafsa.avif";
+import drRabia from "../assets/Images/dr-Rabia.jpg";
+import logo from "../assets/Images/hospital-Logo.png";
 export default function Home() {
   return (
     <div className="pt-30 pb-0 text-gray-900 dark:text-gray-100">

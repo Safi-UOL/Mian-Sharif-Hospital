@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import hospitalCareImg from "../assets/images/hospital-care.jpg"; // corrected case
+import hospitalCareImg from "../assets/Images/Hospital-Care.jpg";
 
 export default function SignIn() {
   return (

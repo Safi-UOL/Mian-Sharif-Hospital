@@ -1,7 +1,7 @@
-import drhammad from "../assets/images/dr-hammad.jpg";
-import drAsif from "../assets/images/asif.jpg";        // <-- ADDED
-import drRabia from "../assets/images/rabia.jpg";     // <-- ADDED
-import drHafsa from "../assets/images/hafsa.webp";     // <-- ADDED
+import drhammad from "../assets/Images/dr-hammad.jpg";
+import drAsif from "../assets/Images/Asif.jpg";
+import drRabia from "../assets/Images/Rabia.jpg";
+import drHafsa from "../assets/Images/Hafsa.webp";
 
 export default function About() {
   return (

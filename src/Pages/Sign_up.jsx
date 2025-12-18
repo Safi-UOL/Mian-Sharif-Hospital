@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import signupImg from "../assets/images/sign-up.jpg"; // <-- LOCAL IMAGE
+import signupImg from "../assets/Images/sign-up.jpg";
 
 export default function Sign_up() {
   return (

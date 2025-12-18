@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "../../assets/images/hospital-logo.png";
+import logo from "../../assets/Images/hospital-Logo.png";
 
 export default function Footer() {
   const location = useLocation();
