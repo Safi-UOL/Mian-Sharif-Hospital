@@ -3,10 +3,54 @@
 @tailwind utilities;
 
 /* =======================================
+   GOOGLE FONT IMPORT (INTER - Better weights)
+   ======================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =======================================
+   PROFESSIONAL TYPOGRAPHY SETUP
+   ======================================= */
+@layer base {
+  body {
+    @apply font-inter text-base leading-relaxed tracking-wide;
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply text-xl font-medium tracking-tight;
+  }
+
+  h5, h6 {
+    @apply text-lg font-medium;
+  }
+
+  p {
+    @apply leading-relaxed text-opacity-90;
+  }
+
+  a {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+}
+
+/* =======================================
    GLOBAL FONT + SMOOTH TRANSITIONS
    ======================================= */
 body {
   @apply transition-colors duration-500 ease-in-out font-inter;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* =======================================
@@ -20,6 +64,41 @@ html:not(.dark) body {
 
 html.dark body {
   @apply text-gray-100;
+}
+
+/* =======================================
+   PROFESSIONAL TEXT STYLES
+   ======================================= */
+.heading-primary {
+  @apply text-4xl font-bold tracking-tight leading-tight;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .heading-primary {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heading-secondary {
+  @apply text-3xl font-semibold tracking-tight;
+}
+
+.text-highlight {
+  @apply font-medium text-transparent bg-clip-text;
+}
+
+.card-title {
+  @apply text-2xl font-semibold tracking-normal leading-tight;
+}
+
+.text-premium {
+  @apply tracking-wide font-medium;
+  letter-spacing: 0.05em;
 }
 
 /* =======================================

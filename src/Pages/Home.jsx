@@ -22,11 +22,11 @@ export default function Home() {
             />
           </div>
 
-          <h1 className="text-5xl font-bold tracking-tight mb-2 animate-soft-blink">
+          <h1 className="text-5xl font-black tracking-tight mb-2 animate-soft-blink text-gray-900 dark:text-white">
             Mian Sharif Hospital
           </h1>
 
-          <p className="text-base max-w-xl mx-auto opacity-80 leading-relaxed">
+          <p className="text-base max-w-xl mx-auto opacity-85 leading-relaxed font-medium">
             Providing trusted, patient-focused medical care with experienced specialists.
           </p>
         </section>
@@ -34,11 +34,11 @@ export default function Home() {
 
       {/* ===== HERO SECTION ===== */}
       <section className="text-center mb-12 px-6">
-        <h2 className="text-4xl font-semibold mb-4 leading-tight max-w-4xl mx-auto">
+        <h2 className="text-4xl font-black mb-4 leading-tight max-w-4xl mx-auto text-gray-900 dark:text-white">
           Providing Reliable & Compassionate Healthcare
         </h2>
 
-        <p className="text-lg max-w-2xl mx-auto opacity-90 mb-8">
+        <p className="text-lg max-w-2xl mx-auto opacity-85 mb-8 font-medium tracking-wide">
           We focus on safe, ethical, and clinically accurate medical services — 
           supported by experienced specialists.
         </p>
@@ -70,7 +70,7 @@ export default function Home() {
 
       {/* ===== SERVICES ===== */}
       <section className="mb-12">
-        <h2 className="text-3xl font-semibold text-center mb-10 px-6">
+        <h2 className="text-4xl font-black text-center mb-10 px-6 text-gray-900 dark:text-white">
           Our Clinical Services
         </h2>
 
@@ -93,7 +93,7 @@ export default function Home() {
 
       {/* ===== DOCTOR TEAM ===== */}
       <section className="mb-12">
-        <h2 className="text-3xl font-semibold text-center mb-10 px-6">
+        <h2 className="text-4xl font-black text-center mb-10 px-6 text-gray-900 dark:text-white">
           Meet Our Specialist Team
         </h2>
 
@@ -125,7 +125,7 @@ export default function Home() {
 
       {/* ===== WHY CHOOSE US ===== */}
       <section className="mb-12">
-        <h2 className="text-3xl font-semibold text-center mb-10 px-6">
+        <h2 className="text-4xl font-black text-center mb-10 px-6 text-gray-900 dark:text-white">
           Why Patients Trust Us
         </h2>
 
@@ -147,8 +147,8 @@ export default function Home() {
 
       {/* ===== CONTACT CTA ===== */}
       <section className="text-center mb-6 max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-semibold mb-4">Need Medical Consultation?</h2>
-        <p className="text-lg opacity-90 mb-6">
+        <h2 className="text-4xl font-black mb-4 text-gray-900 dark:text-white">Need Medical Consultation?</h2>
+        <p className="text-lg opacity-85 mb-6 font-medium tracking-wide">
           Contact us to book appointments or get medical advice.
         </p>
 
