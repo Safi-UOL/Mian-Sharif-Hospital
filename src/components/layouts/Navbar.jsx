@@ -20,19 +20,16 @@ export default function Navbar() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // SAME PAGE = REFRESH | DIFFERENT PAGE = NAVIGATE
   const handleNavClick = (e, path) => {
     e.preventDefault();
     const current = location.pathname;
 
-    // Home logic (localhost + GitHub pages)
     if (path === "/" && homePaths.includes(current)) {
       window.scrollTo({ top: 0, behavior: "smooth" });
       setTimeout(() => window.location.reload(), 300);
       return;
     }
 
-    // Same page refresh (About, Contact, FAQ, etc.)
     if (current === path) {
       window.scrollTo({ top: 0, behavior: "smooth" });
       setTimeout(() => window.location.reload(), 300);
@@ -70,10 +67,38 @@ export default function Navbar() {
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex gap-6 text-lg font-medium">
-          <NavLink to="/" className={getNavClass} onClick={(e) => handleNavClick(e, "/")} end>Home</NavLink>
-          <NavLink to="/about" className={getNavClass} onClick={(e) => handleNavClick(e, "/about")}>About</NavLink>
-          <NavLink to="/contact" className={getNavClass} onClick={(e) => handleNavClick(e, "/contact")}>Contact</NavLink>
-          <NavLink to="/faq" className={getNavClass} onClick={(e) => handleNavClick(e, "/faq")}>FAQ</NavLink>
+          <NavLink to="/" className={getNavClass} onClick={(e) => handleNavClick(e, "/")} end>
+            Home
+          </NavLink>
+
+          <NavLink to="/about" className={getNavClass} onClick={(e) => handleNavClick(e, "/about")}>
+            About
+          </NavLink>
+
+          <NavLink to="/contact" className={getNavClass} onClick={(e) => handleNavClick(e, "/contact")}>
+            Contact
+          </NavLink>
+
+          <NavLink to="/faq" className={getNavClass} onClick={(e) => handleNavClick(e, "/faq")}>
+            FAQ
+          </NavLink>
+
+          {/* 🔹 NEW LINKS */}
+          <NavLink
+            to="/patient-counter"
+            className={getNavClass}
+            onClick={(e) => handleNavClick(e, "/patient-counter")}
+          >
+            Patient Counter
+          </NavLink>
+
+          <NavLink
+            to="/appointment"
+            className={getNavClass}
+            onClick={(e) => handleNavClick(e, "/appointment")}
+          >
+            Appointment
+          </NavLink>
         </div>
 
         {/* DESKTOP BUTTONS */}
@@ -85,8 +110,13 @@ export default function Navbar() {
             {theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode"}
           </button>
 
-          <Link to="/signin" className="px-4 py-2 bg-blue-600 text-white rounded-lg">Sign In</Link>
-          <Link to="/signup" className="px-4 py-2 bg-white/70 dark:bg-gray-700 text-gray-900 dark:text-white border rounded-lg">Sign Up</Link>
+          <Link to="/signin" className="px-4 py-2 bg-blue-600 text-white rounded-lg">
+            Sign In
+          </Link>
+
+          <Link to="/signup" className="px-4 py-2 bg-white/70 dark:bg-gray-700 text-gray-900 dark:text-white border rounded-lg">
+            Sign Up
+          </Link>
         </div>
 
         {/* MOBILE MENU BUTTON */}
@@ -95,47 +125,44 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE DROPDOWN MENU WITH FIXED SPACING */}
+      {/* MOBILE DROPDOWN MENU */}
       {menuOpen && (
         <div className="md:hidden bg-white dark:bg-gray-900 px-6 pb-6 pt-4 text-lg space-y-6">
 
-          <NavLink
-            to="/"
-            className={({ isActive }) => getNavClass({ isActive }) + " block"}
-            onClick={(e) => handleNavClick(e, "/")}
-            end
-          >
+          <NavLink to="/" className={({ isActive }) => getNavClass({ isActive }) + " block"} onClick={(e) => handleNavClick(e, "/")} end>
             Home
           </NavLink>
 
-          <NavLink
-            to="/about"
-            className={({ isActive }) => getNavClass({ isActive }) + " block"}
-            onClick={(e) => handleNavClick(e, "/about")}
-          >
+          <NavLink to="/about" className={({ isActive }) => getNavClass({ isActive }) + " block"} onClick={(e) => handleNavClick(e, "/about")}>
             About
           </NavLink>
 
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => getNavClass({ isActive }) + " block"}
-            onClick={(e) => handleNavClick(e, "/contact")}
-          >
+          <NavLink to="/contact" className={({ isActive }) => getNavClass({ isActive }) + " block"} onClick={(e) => handleNavClick(e, "/contact")}>
             Contact
           </NavLink>
 
-          <NavLink
-            to="/faq"
-            className={({ isActive }) => getNavClass({ isActive }) + " block"}
-            onClick={(e) => handleNavClick(e, "/faq")}
-          >
+          <NavLink to="/faq" className={({ isActive }) => getNavClass({ isActive }) + " block"} onClick={(e) => handleNavClick(e, "/faq")}>
             FAQ
+          </NavLink>
+
+          {/* 🔹 NEW LINKS */}
+          <NavLink to="/patient-counter" className={({ isActive }) => getNavClass({ isActive }) + " block"} onClick={(e) => handleNavClick(e, "/patient-counter")}>
+            Patient Counter
+          </NavLink>
+
+          <NavLink to="/appointment" className={({ isActive }) => getNavClass({ isActive }) + " block"} onClick={(e) => handleNavClick(e, "/appointment")}>
+            Appointment
           </NavLink>
 
           <hr className="border-gray-300 dark:border-gray-700" />
 
-          <Link to="/signin" onClick={() => setMenuOpen(false)} className="block">Sign In</Link>
-          <Link to="/signup" onClick={() => setMenuOpen(false)} className="block">Sign Up</Link>
+          <Link to="/signin" onClick={() => setMenuOpen(false)} className="block">
+            Sign In
+          </Link>
+
+          <Link to="/signup" onClick={() => setMenuOpen(false)} className="block">
+            Sign Up
+          </Link>
 
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
