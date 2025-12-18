@@ -13,22 +13,25 @@ import Terms from "./Pages/Terms";
 import Privacy from "./Pages/Privacy";
 import Disclaimer from "./Pages/Disclaimer";
 
+// 🔹 LAB PART 1
+import PatientCounter from "./Pages/PatientCounter";
+
+// 🔹 LAB PART 2
+import AppointmentForm from "./Pages/AppointmentForm";
+
 export default function App() {
   return (
     <>
       <ScrollToTop />
 
       <div className="flex flex-col min-h-screen">
-
         <Navbar />
 
         <main className="flex-grow pt-0 md:pt-20 pb-0">
           <Routes>
 
-            {/* Default Home */}
+            {/* Home */}
             <Route path="/" element={<Home />} />
-
-            {/* /home → redirect to / */}
             <Route path="/home" element={<Navigate to="/" replace />} />
 
             {/* Pages */}
@@ -41,7 +44,11 @@ export default function App() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
 
-            {/* Catch-all → Home */}
+            {/* 🔹 LAB ROUTES */}
+            <Route path="/patient-counter" element={<PatientCounter />} />
+            <Route path="/appointment" element={<AppointmentForm />} />
+
+            {/* Catch-all */}
             <Route path="*" element={<Navigate to="/" replace />} />
 
           </Routes>

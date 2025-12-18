@@ -1,15 +1,12 @@
 {
   "name": "hospital_website",
   "private": true,
-  "homepage": "https://safi-uol.github.io/Mian-Sharif-Hospital/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -20,7 +17,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.0",
     "autoprefixer": "^10.4.22",
-    "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18",
     "vite": "^7.2.2"
