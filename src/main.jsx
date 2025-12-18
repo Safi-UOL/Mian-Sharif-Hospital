@@ -14,13 +14,7 @@ if (savedTheme === "dark") {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter
-      basename={
-        import.meta.env.MODE === "production"
-          ? "/Mian-Sharif-Hospital"
-          : "/"
-      }
-    >
+    <BrowserRouter basename="/">
       <App />
     </BrowserRouter>
   </React.StrictMode>
