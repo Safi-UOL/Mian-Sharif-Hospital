@@ -11,24 +11,26 @@ export default function Home() {
   return (
     <div className="pt-24 pb-0 text-gray-900 dark:text-gray-100">
 
-      {/* ===== TOP LOGO + NAME ===== */}
-      <section className="px-6 md:px-20 text-center mb-12">
-        <div className="flex flex-col items-center justify-center mb-3">
-          <img
-            src={logo}
-            alt="Hospital Logo"
-            className="w-24 h-24 object-contain"
-          />
-        </div>
+      {/* ===== TOP LOGO + NAME WITH SCROLL REVEAL ===== */}
+      <ScrollReveal direction="left">
+        <section className="px-6 md:px-20 text-center mb-12">
+          <div className="flex flex-col items-center justify-center mb-3">
+            <img
+              src={logo}
+              alt="Hospital Logo"
+              className="w-24 h-24 object-contain"
+            />
+          </div>
 
-        <h1 className="text-5xl font-bold tracking-tight mb-2">
-          Mian Sharif Hospital
-        </h1>
+          <h1 className="text-5xl font-bold tracking-tight mb-2 animate-soft-blink">
+            Mian Sharif Hospital
+          </h1>
 
-        <p className="text-base max-w-xl mx-auto opacity-80 leading-relaxed">
-          Providing trusted, patient-focused medical care with experienced specialists.
-        </p>
-      </section>
+          <p className="text-base max-w-xl mx-auto opacity-80 leading-relaxed">
+            Providing trusted, patient-focused medical care with experienced specialists.
+          </p>
+        </section>
+      </ScrollReveal>
 
       {/* ===== HERO SECTION ===== */}
       <section className="px-6 md:px-20 text-center mb-12">
