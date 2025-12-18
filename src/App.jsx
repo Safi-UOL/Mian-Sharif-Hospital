@@ -19,11 +19,11 @@ import PatientCounter from "./Pages/PatientCounter";
 import AppointmentForm from "./Pages/AppointmentForm";
 
 
-import SpaHome from "./SPA_Routing/pages/Home";
-import CreatePatient from "./SPA_Routing/pages/CreatePatient";
-import Patients from "./SPA_Routing/pages/Patients";
-import PatientDetails from "./SPA_Routing/pages/PatientDetails";
-import EditPatient from "./SPA_Routing/pages/EditPatient";
+import SpaHome from "./SPA_Routing/Pages/Home";
+import CreatePatient from "./SPA_Routing/Pages/CreatePatient";
+import Patients from "./SPA_Routing/Pages/Patients";
+import PatientDetails from "./SPA_Routing/Pages/PatientDetails";
+import EditPatient from "./SPA_Routing/Pages/EditPatient";
 
 
 export default function App() {
