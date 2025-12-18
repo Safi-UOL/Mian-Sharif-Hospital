@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/hospital-Logo.png";
+import logo from "../../assets/images/hospital-logo.png";
 import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Navbar() {

@@ -5,7 +5,7 @@ import drAhmad from "../assets/images/dr-ahmad.jpg";
 import drAsif from "../assets/images/dr-asif.jpg";
 import drHafsa from "../assets/images/dr-hafsa.avif";
 import drRabia from "../assets/images/dr-Rabia.jpg";   
-import logo from "../assets/images/hospital-Logo.png";
+import logo from "../assets/images/hospital-logo.png";
 
 export default function Home() {
   return (
