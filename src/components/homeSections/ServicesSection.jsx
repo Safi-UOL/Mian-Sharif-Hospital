@@ -48,15 +48,15 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="pt-10 pb-24 px-6 md:px-20 text-gray-900 dark:text-gray-100">
+    <section className="pt-10 pb-24 text-gray-900 dark:text-gray-100">
 
       {/* SECTION HEADER */}
-      <h2 className="text-4xl font-semibold text-center mb-12">
+      <h2 className="text-4xl font-semibold text-center mb-12 px-6">
         Our Clinical Services
       </h2>
 
       {/* SERVICE CARDS */}
-      <div className="grid md:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
 
         {services.map((s, index) => (
           <div

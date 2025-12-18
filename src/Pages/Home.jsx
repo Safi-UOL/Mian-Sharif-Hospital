@@ -33,8 +33,8 @@ export default function Home() {
       </ScrollReveal>
 
       {/* ===== HERO SECTION ===== */}
-      <section className="px-6 md:px-20 text-center mb-12">
-        <h2 className="text-4xl font-semibold mb-4 leading-tight">
+      <section className="text-center mb-12 px-6">
+        <h2 className="text-4xl font-semibold mb-4 leading-tight max-w-4xl mx-auto">
           Providing Reliable & Compassionate Healthcare
         </h2>
 
@@ -69,12 +69,12 @@ export default function Home() {
       </section>
 
       {/* ===== SERVICES ===== */}
-      <section className="px-6 md:px-20 mb-12">
-        <h2 className="text-3xl font-semibold text-center mb-10">
+      <section className="mb-12">
+        <h2 className="text-3xl font-semibold text-center mb-10 px-6">
           Our Clinical Services
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
           {[
             ["Pediatric Care", "Child examinations, vaccinations, neonatal care, routine treatments."],
             ["Gynecology & Obstetrics", "Maternal care, antenatal evaluations, gynecological procedures."],
@@ -92,12 +92,12 @@ export default function Home() {
       </section>
 
       {/* ===== DOCTOR TEAM ===== */}
-      <section className="px-6 md:px-20 mb-12">
-        <h2 className="text-3xl font-semibold text-center mb-10">
+      <section className="mb-12">
+        <h2 className="text-3xl font-semibold text-center mb-10 px-6">
           Meet Our Specialist Team
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto px-6">
           {[
             [drAsif, "Dr. Asif Mahmood", "Specialist (MBBS, MPH, MPhil)", "25+ years experience", "text-blue-600 dark:text-blue-300"],
             [drRabia, "Dr. Rabia Manzoor", "Gynecologist (MBBS)", "15 years experience", "text-pink-600 dark:text-pink-400"],
@@ -124,12 +124,12 @@ export default function Home() {
       </section>
 
       {/* ===== WHY CHOOSE US ===== */}
-      <section className="px-6 md:px-20 mb-12">
-        <h2 className="text-3xl font-semibold text-center mb-10">
+      <section className="mb-12">
+        <h2 className="text-3xl font-semibold text-center mb-10 px-6">
           Why Patients Trust Us
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
           {[
             ["Experienced Doctors", "Years of clinical excellence."],
             ["Standard Medical Practice", "Evidence-based diagnosis."],
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* ===== CONTACT CTA ===== */}
-      <section className="px-6 md:px-20 text-center mb-6">
+      <section className="text-center mb-6 max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-semibold mb-4">Need Medical Consultation?</h2>
         <p className="text-lg opacity-90 mb-6">
           Contact us to book appointments or get medical advice.
