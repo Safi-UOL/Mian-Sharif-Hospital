@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"; 
+import ScrollReveal from "../components/common/ScrollReveal";
 import heroImage from "../assets/Images/hero.jpeg";
 import drAhmad from "../assets/Images/dr-ahmad.jpg";
 import drAsif from "../assets/Images/dr-asif.jpg";
@@ -77,14 +78,13 @@ export default function Home() {
             ["Gynecology & Obstetrics", "Maternal care, antenatal evaluations, gynecological procedures."],
             ["Cardiology", "ECG, cardiac risk assessment, hypertension & diabetes management."],
             ["Dermatology", "Acne care, pigmentation, laser treatment, PRP, hydrafacial."]
-          ].map(([title, desc]) => (
-            <div
-              key={title}
-              className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50"
-            >
-              <h3 className="text-xl font-medium mb-2">{title}</h3>
-              <p className="opacity-90">{desc}</p>
-            </div>
+          ].map(([title, desc], idx) => (
+            <ScrollReveal key={title} direction={idx % 2 === 0 ? "left" : "right"}>
+              <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50">
+                <h3 className="text-xl font-medium mb-2">{title}</h3>
+                <p className="opacity-90">{desc}</p>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -101,23 +101,22 @@ export default function Home() {
             [drRabia, "Dr. Rabia Manzoor", "Gynecologist (MBBS)", "15 years experience", "text-pink-600 dark:text-pink-400"],
             [drAhmad, "Dr. Ahmad Hammad", "Cardiologist (MBBS, FCPS)", "Heart specialist", "text-red-600 dark:text-red-400"],
             [drHafsa, "Dr. Hafsa Hammad", "Skin Specialist (MBBS)", "Dermatology care", "text-purple-600 dark:text-purple-400"]
-          ].map(([img, name, role, exp, color]) => (
-            <div
-              key={name}
-              className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50"
-            >
-              <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
-                <img 
-                  src={img} 
-                  alt={name} 
-                  loading="lazy"
-                  className="w-full h-full object-cover" 
-                />
+          ].map(([img, name, role, exp, color], idx) => (
+            <ScrollReveal key={name} direction={idx % 2 === 0 ? "left" : "right"}>
+              <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50">
+                <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
+                  <img 
+                    src={img} 
+                    alt={name} 
+                    loading="lazy"
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+                <h3 className="text-xl font-medium">{name}</h3>
+                <p className={`${color} text-sm mb-2`}>{role}</p>
+                <p className="opacity-80 text-sm">{exp}</p>
               </div>
-              <h3 className="text-xl font-medium">{name}</h3>
-              <p className={`${color} text-sm mb-2`}>{role}</p>
-              <p className="opacity-80 text-sm">{exp}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -133,14 +132,13 @@ export default function Home() {
             ["Experienced Doctors", "Years of clinical excellence."],
             ["Standard Medical Practice", "Evidence-based diagnosis."],
             ["Patient-Focused Approach", "Comfort, communication & trust."]
-          ].map(([title, desc]) => (
-            <div
-              key={title}
-              className="p-8 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50"
-            >
-              <h3 className="text-xl font-medium mb-2">{title}</h3>
-              <p className="opacity-80">{desc}</p>
-            </div>
+          ].map(([title, desc], idx) => (
+            <ScrollReveal key={title} direction={idx % 2 === 0 ? "left" : "right"}>
+              <div className="p-8 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50">
+                <h3 className="text-xl font-medium mb-2">{title}</h3>
+                <p className="opacity-80">{desc}</p>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>

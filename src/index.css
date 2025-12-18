@@ -53,6 +53,39 @@ html.dark body {
 }
 
 /* =======================================
+   SCROLL REVEAL ANIMATIONS (LEFT/RIGHT)
+   ======================================= */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.7s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.7s ease-out;
+}
+
+/* =======================================
    GLOBAL RESPONSIVE FIX (MOBILE SAFE)
    ======================================= */
 @media (max-width: 768px) {
