@@ -19,40 +19,34 @@ export default function Navbar() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const handleNavClick = (e, path) => {
-    e.preventDefault();
-    const current = location.pathname;
-
-    if (path === "/" && current === "/") {
+  const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      window.location.reload();
+    } else {
+      navigate("/");
       window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
     }
-
-    if (current === path) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
-    setMenuOpen(false);
-    navigate(path);
   };
 
   const getNavClass = ({ isActive }) =>
     isActive
-      ? "font-semibold text-black dark:text-white border-b-2 border-black dark:border-white pb-1"
-      : "text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition pb-1";
+      ? "font-semibold text-black dark:text-white border-b-3 border-black dark:border-white pb-1 transition-all duration-300"
+      : "text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition pb-1 duration-300";
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/70 dark:bg-gray-900/30 border-b border-gray-200 dark:border-gray-700 shadow-sm">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        {/* LOGO */}
-        <Link to="/" className="flex items-center gap-3">
+        {/* LOGO - CLICK TO RELOAD HOME PAGE */}
+        <button
+          onClick={handleLogoClick}
+          className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer"
+        >
           <img src={logo} className="w-10 h-10" />
-          <span className="text-xl md:text-2xl font-bold dark:text-white">
+          <span className="text-xl md:text-2xl font-bold dark:text-white text-black">
             Mian Sharif Hospital
           </span>
-        </Link>
+        </button>
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex gap-3 text-sm font-medium items-center">

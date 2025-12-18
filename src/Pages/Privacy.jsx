@@ -13,7 +13,7 @@ export default function Privacy() {
 
       {/* HEADER */}
       <ScrollReveal direction="left">
-      <section className="text-center max-w-3xl mx-auto mb-16">
+      <section className="text-center max-w-3xl mx-auto mb-16 px-6">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Privacy Policy
         </h1>

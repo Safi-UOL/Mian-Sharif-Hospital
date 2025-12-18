@@ -13,7 +13,7 @@ export default function Contact() {
 
       {/* HEADER */}
       <ScrollReveal direction="left">
-      <section className="text-center max-w-3xl mx-auto mb-16">
+      <section className="text-center max-w-3xl mx-auto mb-16 px-6">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Contact Our Hospital
         </h1>
@@ -25,7 +25,7 @@ export default function Contact() {
       </ScrollReveal>
 
       {/* CONTACT GRID */}
-      <section className="grid md:grid-cols-2 gap-12 mb-20">
+      <section className="grid md:grid-cols-2 gap-12 mb-20 max-w-6xl mx-auto px-6">
 
         {/* LEFT SIDE — CONTACT DETAILS */}
         <ScrollReveal direction="left">

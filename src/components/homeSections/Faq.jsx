@@ -54,7 +54,7 @@ export default function Faq() {
 
       {/* HEADER */}
       <ScrollReveal direction="left">
-      <section className="text-center max-w-3xl mx-auto mb-14">
+      <section className="text-center max-w-3xl mx-auto mb-16 px-6">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Frequently Asked Questions
         </h1>
@@ -66,7 +66,7 @@ export default function Faq() {
       </ScrollReveal>
 
       {/* FAQ CARDS */}
-      <section className="max-w-4xl mx-auto space-y-6">
+      <section className="max-w-4xl mx-auto px-6 space-y-6">
         {faqs.map((item, i) => (
           <ScrollReveal key={i} direction={i % 2 === 0 ? "left" : "right"}>
           <div
