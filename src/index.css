@@ -3,28 +3,27 @@
 @tailwind utilities;
 
 /* =======================================
-   GLOBAL FONT + TRANSITION
+   GLOBAL FONT + SMOOTH TRANSITIONS
    ======================================= */
 body {
   @apply transition-colors duration-500 ease-in-out font-inter;
 }
 
 /* =======================================
-   LIGHT MODE GRADIENT THEME
+   IMPORTANT:
+   BACKGROUND IS NOW HANDLED IN App.jsx
+   So NO body gradients here (prevents conflict)
    ======================================= */
 html:not(.dark) body {
-  @apply bg-gradient-to-br from-white to-sky-100 text-gray-900;
+  @apply text-gray-900;
 }
 
-/* =======================================
-   DARK MODE GRADIENT THEME
-   ======================================= */
 html.dark body {
-  @apply bg-gradient-to-br from-gray-900 to-blue-900 text-gray-100;
+  @apply text-gray-100;
 }
 
 /* =======================================
-   SOFT BLINK EFFECT
+   SOFT BLINK EFFECT (LOGO / HOSPITAL NAME)
    ======================================= */
 @keyframes pulseSoft {
   0%, 100% { opacity: 1; }
@@ -36,11 +35,28 @@ html.dark body {
 }
 
 /* =======================================
-   GLOBAL RESPONSIVE FIX FOR MOBILE
+   SLIDE-UP SCROLL ANIMATION (KEY FEATURE)
+   ======================================= */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out both;
+}
+
+/* =======================================
+   GLOBAL RESPONSIVE FIX (MOBILE SAFE)
    ======================================= */
 @media (max-width: 768px) {
 
-  /* Headings scale down */
   h1 {
     font-size: 1.9rem !important;
     line-height: 2.3rem !important;
@@ -55,26 +71,22 @@ html.dark body {
     font-size: 1.25rem !important;
   }
 
-  /* Paragraph readability */
   p {
     font-size: 0.95rem !important;
     line-height: 1.45rem !important;
   }
 
-  /* Section padding fix */
   section {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
 
-  /* Images auto-resize properly */
   img {
     width: 100%;
     height: auto !important;
     object-fit: cover;
   }
 
-  /* Reduce huge spacing on all mobile pages */
   .mb-20 {
     margin-bottom: 2.5rem !important;
   }
@@ -85,7 +97,7 @@ html.dark body {
 }
 
 /* =======================================
-   OPTIONAL: Prevent layout shift
+   SMOOTH SCROLL (SAFE)
    ======================================= */
 * {
   scroll-behavior: smooth;
