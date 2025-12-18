@@ -10,11 +10,8 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const homePaths = ["/", "/Mian-Sharif-Hospital/"];
-  const HOME_URL =
-    import.meta.env.MODE === "production"
-      ? "/Mian-Sharif-Hospital/"
-      : "/";
+  const homePaths = ["/"];
+  const HOME_URL = "/";
 
   useEffect(() => {
     if (theme === "dark") document.documentElement.classList.add("dark");
@@ -74,9 +71,9 @@ export default function Navbar() {
         {/* DESKTOP MENU */}
         <div className="hidden md:flex gap-6 text-lg font-medium">
           <NavLink to="/" className={getNavClass} onClick={(e) => handleNavClick(e, "/")} end>Home</NavLink>
-          <NavLink to="./about" className={getNavClass} onClick={(e) => handleNavClick(e, "./about")}>About</NavLink>
-          <NavLink to="./contact" className={getNavClass} onClick={(e) => handleNavClick(e, "./contact")}>Contact</NavLink>
-          <NavLink to="./faq" className={getNavClass} onClick={(e) => handleNavClick(e, "./faq")}>FAQ</NavLink>
+          <NavLink to="/about" className={getNavClass} onClick={(e) => handleNavClick(e, "/about")}>About</NavLink>
+          <NavLink to="/contact" className={getNavClass} onClick={(e) => handleNavClick(e, "/contact")}>Contact</NavLink>
+          <NavLink to="/faq" className={getNavClass} onClick={(e) => handleNavClick(e, "/faq")}>FAQ</NavLink>
         </div>
 
         {/* DESKTOP BUTTONS */}

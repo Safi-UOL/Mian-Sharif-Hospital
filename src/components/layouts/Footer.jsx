@@ -4,11 +4,8 @@ import logo from "../../assets/Images/hospital-Logo.png";
 export default function Footer() {
   const location = useLocation();
 
-  // Normalize GitHub Pages path so "/" works correctly
-  const normalize = (p) => p.replace("/Mian-Sharif-Hospital", "") || "/";
-
   const scrollOrNavigate = (path) => {
-    if (normalize(location.pathname) === path) {
+    if (location.pathname === path) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
