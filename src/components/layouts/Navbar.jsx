@@ -114,21 +114,21 @@ export default function Navbar() {
             z-40 transition-all duration-300
           "
         >
-          <NavLink to="/" end className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Home</NavLink>
-          <NavLink to="/about" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>About</NavLink>
-          <NavLink to="/contact" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Contact</NavLink>
-          <NavLink to="/faq" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>FAQ</NavLink>
+          <NavLink to="/" end className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`} onClick={() => setMenuOpen(false)}>Home</NavLink>
+          <NavLink to="/about" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`} onClick={() => setMenuOpen(false)}>About</NavLink>
+          <NavLink to="/contact" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`} onClick={() => setMenuOpen(false)}>Contact</NavLink>
+          <NavLink to="/faq" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`} onClick={() => setMenuOpen(false)}>FAQ</NavLink>
 
           <hr className="border-gray-200 dark:border-gray-700 my-2" />
 
-          <NavLink to="/patient-counter" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Patient Counter</NavLink>
-          <NavLink to="/appointment" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Appointment</NavLink>
-          <NavLink to="/assignment/patients" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Patients</NavLink>
+          <NavLink to="/patient-counter" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`} onClick={() => setMenuOpen(false)}>Patient Counter</NavLink>
+          <NavLink to="/appointment" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`} onClick={() => setMenuOpen(false)}>Appointment</NavLink>
+          <NavLink to="/assignment/patients" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`} onClick={() => setMenuOpen(false)}>Patients</NavLink>
 
           <hr className="border-gray-200 dark:border-gray-700 my-2" />
 
-          <Link to="/signin" className="block w-full py-3 px-3 rounded-md text-base font-medium hover:bg-white/20 dark:hover:bg-gray-800/30">Sign In</Link>
-          <Link to="/signup" className="block w-full py-3 px-3 rounded-md bg-white/80 dark:bg-gray-700 text-gray-900 dark:text-white text-center font-medium">Sign Up</Link>
+          <Link to="/signin" className="block w-full py-3 px-3 rounded-md text-base font-medium hover:bg-white/20 dark:hover:bg-gray-800/30" onClick={() => setMenuOpen(false)}>Sign In</Link>
+          <Link to="/signup" className="block w-full py-3 px-3 rounded-md bg-white/80 dark:bg-gray-700 text-gray-900 dark:text-white text-center font-medium" onClick={() => setMenuOpen(false)}>Sign Up</Link>
 
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
