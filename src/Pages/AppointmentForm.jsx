@@ -10,15 +10,28 @@ export default function AppointmentForm() {
 
   useEffect(() => {
     const scrollToForm = () => {
-      if (typeof window !== 'undefined' && window.location.hash === '#appointment-form') {
-        const el = document.getElementById('appointment-form');
-        if (el) {
-          // small timeout to ensure layout is ready then smooth scroll
-          setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-        }
-      }
+      if (typeof window === 'undefined' || window.location.hash !== '#appointment-form') return;
+      const el = document.getElementById('appointment-form');
+      if (!el) return;
+
+      // compute offset to account for the sticky navbar height
+      const rect = el.getBoundingClientRect();
+      const header = document.querySelector('nav');
+      const headerHeight = header ? header.getBoundingClientRect().height : 80;
+      const offset = 16; // small spacing so input isn't flushed to the top
+      const top = window.scrollY + rect.top - headerHeight - offset;
+
+      // smooth scroll to adjusted position
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      // focus the first input so Patient Name is visible and ready (preventScroll: true)
+      setTimeout(() => {
+        const firstInput = el.querySelector('input, textarea, select');
+        if (firstInput) firstInput.focus({ preventScroll: true });
+      }, 400);
     };
 
+    // call on mount and on hash change
     scrollToForm();
     window.addEventListener('hashchange', scrollToForm);
     return () => window.removeEventListener('hashchange', scrollToForm);
