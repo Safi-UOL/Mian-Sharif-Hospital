@@ -32,7 +32,7 @@ export default function About() {
               <img
                 src={drAsif}
                 alt="Dr. Asif Mahmood"
-                className="w-full h-full object-cover object-[50%_35%]"
+                className="w-full h-full object-contain object-center"
               />
             </div>
             <h2 className="text-3xl font-medium mb-2">Dr. Asif Mahmood</h2>
@@ -53,7 +53,7 @@ export default function About() {
               <img
                 src={drRabia}
                 alt="Dr. Rabia Manzoor"
-                className="w-full h-full object-cover object-[60%_50%]"
+                className="w-full h-full object-contain object-center"
               />
             </div>
             <h2 className="text-3xl font-medium mb-2">Dr. Rabia Manzoor</h2>
@@ -74,7 +74,7 @@ export default function About() {
               <img
                 src={drhammad}
                 alt="Dr. Ahmad Hammad"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-contain object-center"
               />
             </div>
             <h2 className="text-3xl font-medium mb-2">Dr. Ahmad Hammad</h2>
@@ -95,7 +95,7 @@ export default function About() {
               <img
                 src={drHafsa}
                 alt="Dr. Hafsa Hammad"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-contain object-center"
               />
             </div>
             <h2 className="text-3xl font-medium mb-2">Dr. Hafsa Hammad</h2>

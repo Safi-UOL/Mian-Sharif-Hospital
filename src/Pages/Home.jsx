@@ -113,7 +113,7 @@ export default function Home() {
                     src={img}
                     alt={name}
                     loading="lazy"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain object-center"
                   />
                 </div>
                 <h3 className="text-xl font-medium">{name}</h3>
