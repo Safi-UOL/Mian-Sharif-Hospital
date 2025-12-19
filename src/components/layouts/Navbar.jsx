@@ -110,8 +110,8 @@ export default function Navbar() {
         <div
           className="
             md:hidden px-6 pb-6 pt-4 space-y-3
-            bg-white/70 dark:bg-black/60
-            backdrop-blur-xl rounded-b-xl
+            glass rounded-b-xl shadow-xl border border-white/20 dark:border-gray-700/20
+            z-40 transition-all duration-300
           "
         >
           <NavLink to="/" end className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Home</NavLink>
