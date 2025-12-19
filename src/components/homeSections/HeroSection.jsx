@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function HeroSection() {
   return (
     <section className="pt-32 pb-24 px-6 md:px-20 text-gray-900 dark:text-gray-100">
@@ -16,11 +18,11 @@ export default function HeroSection() {
 
         {/* BUTTONS */}
         <div className="mt-8 flex justify-center gap-4">
-          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-all">
+          <Link to="/appointment" className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 text-white rounded-full shadow-lg transition-all">
             Book Appointment
-          </button>
-          <button className="px-8 py-3 border border-blue-600 text-blue-600 dark:text-blue-400 
-            dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/20 rounded-full transition-all">
+          </Link>
+          <button className="px-8 py-3 border border-emerald-600 text-emerald-600 dark:text-emerald-400 
+            dark:border-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/10 rounded-full transition-all">
             View Departments
           </button>
         </div>
