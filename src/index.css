@@ -70,8 +70,8 @@ html.dark body {
    PROFESSIONAL TEXT STYLES
    ======================================= */
 .heading-primary {
-  @apply text-4xl font-bold tracking-tight leading-tight;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+  @apply text-4xl font-semibold tracking-tight leading-tight;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -85,7 +85,7 @@ html.dark body {
 }
 
 .heading-secondary {
-  @apply text-3xl font-semibold tracking-tight;
+  @apply text-3xl font-medium tracking-tight;
 }
 
 .text-highlight {
@@ -93,12 +93,27 @@ html.dark body {
 }
 
 .card-title {
-  @apply text-2xl font-semibold tracking-normal leading-tight;
+  @apply text-2xl font-medium tracking-normal leading-tight;
 }
 
 .text-premium {
   @apply tracking-wide font-medium;
   letter-spacing: 0.05em;
+}
+
+/* =======================================
+   GLASSMORPHIC UTILITIES
+   ======================================= */
+.glass {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.dark .glass {
+  background: rgba(6, 8, 14, 0.4);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 /* =======================================

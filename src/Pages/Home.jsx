@@ -9,11 +9,11 @@ import logo from "../assets/Images/hospital-Logo.png";
 
 export default function Home() {
   return (
-    <div className="pt-24 pb-0 text-gray-900 dark:text-gray-100">
+    <div className="pt-4 pb-0 text-gray-900 dark:text-gray-100">
 
-      {/* ===== TOP LOGO + NAME WITH SCROLL REVEAL ===== */}
+      {/* ===== TOP LOGO + NAME ===== */}
       <ScrollReveal direction="left">
-        <section className="px-6 md:px-20 text-center mb-12">
+        <section className="px-6 md:px-20 text-center mb-10">
           <div className="flex flex-col items-center justify-center mb-3">
             <img
               src={logo}
@@ -22,28 +22,28 @@ export default function Home() {
             />
           </div>
 
-          <h1 className="text-5xl font-black tracking-tight mb-2 animate-soft-blink text-gray-900 dark:text-white">
+          <h1 className="text-5xl font-semibold tracking-tight mb-2 animate-soft-blink">
             Mian Sharif Hospital
           </h1>
 
-          <p className="text-base max-w-xl mx-auto opacity-85 leading-relaxed font-medium">
+          <p className="text-base max-w-xl mx-auto opacity-80 leading-relaxed">
             Providing trusted, patient-focused medical care with experienced specialists.
           </p>
         </section>
       </ScrollReveal>
 
       {/* ===== HERO SECTION ===== */}
-      <section className="text-center mb-12 px-6">
-        <h2 className="text-4xl font-black mb-4 leading-tight max-w-4xl mx-auto text-gray-900 dark:text-white">
+      <section className="text-center mb-8 px-6">
+        <h2 className="text-4xl font-semibold mb-3 leading-tight max-w-4xl mx-auto">
           Providing Reliable & Compassionate Healthcare
         </h2>
 
-        <p className="text-lg max-w-2xl mx-auto opacity-85 mb-8 font-medium tracking-wide">
+        <p className="text-lg max-w-2xl mx-auto opacity-80 mb-6">
           We focus on safe, ethical, and clinically accurate medical services — 
           supported by experienced specialists.
         </p>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-6">
           <Link
             to="/contact#contact-details"
             className="px-8 py-3 bg-gray-900 hover:bg-gray-700 
@@ -55,7 +55,7 @@ export default function Home() {
         </div>
 
         <div
-          className="mt-8 w-full max-w-3xl mx-auto h-72 rounded-2xl shadow-xl 
+          className="w-full max-w-3xl mx-auto h-72 rounded-2xl shadow-xl 
                      overflow-hidden border border-white/40 dark:border-blue-900/40 
                      bg-white/50 dark:bg-gray-800/50"
         >
@@ -70,9 +70,10 @@ export default function Home() {
 
       {/* ===== SERVICES ===== */}
       <section className="mb-12">
-        <h2 className="text-4xl font-black text-center mb-10 px-6 text-gray-900 dark:text-white">
-          Our Clinical Services
-        </h2>
+        <h2 className="text-4xl font-semibold tracking-tight text-center mb-10 px-6">
+  Our Clinical Services
+</h2>
+
 
         <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
           {[
@@ -82,7 +83,7 @@ export default function Home() {
             ["Dermatology", "Acne care, pigmentation, laser treatment, PRP, hydrafacial."]
           ].map(([title, desc], idx) => (
             <ScrollReveal key={title} direction={idx % 2 === 0 ? "left" : "right"}>
-              <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50">
+              <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50 h-full flex flex-col">
                 <h3 className="text-xl font-medium mb-2">{title}</h3>
                 <p className="opacity-90">{desc}</p>
               </div>
@@ -93,9 +94,10 @@ export default function Home() {
 
       {/* ===== DOCTOR TEAM ===== */}
       <section className="mb-12">
-        <h2 className="text-4xl font-black text-center mb-10 px-6 text-gray-900 dark:text-white">
-          Meet Our Specialist Team
-        </h2>
+        <h2 className="text-4xl font-semibold tracking-tight text-center mb-10 px-6">
+  Meet Our Medical Specialists
+</h2>
+
 
         <div className="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto px-6">
           {[
@@ -105,13 +107,13 @@ export default function Home() {
             [drHafsa, "Dr. Hafsa Hammad", "Skin Specialist (MBBS)", "Dermatology care", "text-purple-600 dark:text-purple-400"]
           ].map(([img, name, role, exp, color], idx) => (
             <ScrollReveal key={name} direction={idx % 2 === 0 ? "left" : "right"}>
-              <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50">
+              <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50 h-full flex flex-col">
                 <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
-                  <img 
-                    src={img} 
-                    alt={name} 
+                  <img
+                    src={img}
+                    alt={name}
                     loading="lazy"
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <h3 className="text-xl font-medium">{name}</h3>
@@ -125,9 +127,10 @@ export default function Home() {
 
       {/* ===== WHY CHOOSE US ===== */}
       <section className="mb-12">
-        <h2 className="text-4xl font-black text-center mb-10 px-6 text-gray-900 dark:text-white">
-          Why Patients Trust Us
-        </h2>
+<h2 className="text-4xl font-semibold tracking-tight text-center mb-10 px-6">
+  Why Patients Trust us
+</h2>
+
 
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
           {[
@@ -136,7 +139,7 @@ export default function Home() {
             ["Patient-Focused Approach", "Comfort, communication & trust."]
           ].map(([title, desc], idx) => (
             <ScrollReveal key={title} direction={idx % 2 === 0 ? "left" : "right"}>
-              <div className="p-8 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50">
+              <div className="p-8 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50 h-full flex flex-col">
                 <h3 className="text-xl font-medium mb-2">{title}</h3>
                 <p className="opacity-80">{desc}</p>
               </div>
@@ -147,7 +150,9 @@ export default function Home() {
 
       {/* ===== CONTACT CTA ===== */}
       <section className="text-center mb-6 max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-black mb-4 text-gray-900 dark:text-white">Need Medical Consultation?</h2>
+<h2 className="text-4xl font-semibold tracking-tight text-center mb-10 px-6">
+          Need Medical Consultation?
+        </h2>
         <p className="text-lg opacity-85 mb-6 font-medium tracking-wide">
           Contact us to book appointments or get medical advice.
         </p>

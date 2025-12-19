@@ -10,9 +10,6 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const homePaths = ["/"];
-  const HOME_URL = "/";
-
   useEffect(() => {
     if (theme === "dark") document.documentElement.classList.add("dark");
     else document.documentElement.classList.remove("dark");
@@ -30,102 +27,112 @@ export default function Navbar() {
 
   const getNavClass = ({ isActive }) =>
     isActive
-      ? "font-semibold text-black dark:text-white border-b-3 border-black dark:border-white pb-1 transition-all duration-300"
-      : "text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition pb-1 duration-300";
+      ? "font-semibold text-gray-900 dark:text-white border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+      : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition";
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/70 dark:bg-gray-900/30 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+    <nav
+      className="
+        sticky top-0 z-50
+        backdrop-blur-xl backdrop-saturate-150
+        bg-white/60 dark:bg-black/50
+        border-b border-white/30 dark:border-white/10
+        shadow-md
+      "
+    >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        {/* LOGO - CLICK TO RELOAD HOME PAGE */}
+        {/* LOGO */}
         <button
           onClick={handleLogoClick}
-          className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer"
+          className="flex items-center gap-3 hover:opacity-80 transition"
         >
-          <img src={logo} className="w-10 h-10" />
-          <span className="text-xl md:text-2xl font-bold dark:text-white text-black">
+          <img src={logo} alt="Hospital Logo" className="w-10 h-10" />
+          <span className="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
             Mian Sharif Hospital
           </span>
         </button>
 
         {/* DESKTOP MENU */}
-        <div className="hidden md:flex gap-3 text-sm font-medium items-center">
-
-          {/* Hospital */}
+        <div className="hidden md:flex items-center gap-6 font-medium whitespace-nowrap">
           <NavLink to="/" className={getNavClass} end>Home</NavLink>
           <NavLink to="/about" className={getNavClass}>About</NavLink>
           <NavLink to="/contact" className={getNavClass}>Contact</NavLink>
           <NavLink to="/faq" className={getNavClass}>FAQ</NavLink>
-
-          {/* Lab */}
-          <NavLink to="/patient-counter" className={getNavClass}>
-            Patient Counter
-          </NavLink>
-          <NavLink to="/appointment" className={getNavClass}>
-            Appointment
-          </NavLink>
-
-          {/* Assignment SPA - Single Patients Page */}
-          <NavLink to="/assignment/patients" className={getNavClass}>
-            Patients
-          </NavLink>
+          <NavLink to="/patient-counter" className={getNavClass}>Patient Counter</NavLink>
+          <NavLink to="/appointment" className={getNavClass}>Appointment</NavLink>
+          <NavLink to="/assignment/patients" className={getNavClass}>Patients</NavLink>
         </div>
 
-        {/* RIGHT SIDE BUTTONS */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* RIGHT BUTTONS */}
+        <div className="hidden md:flex items-center gap-3 whitespace-nowrap">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="px-4 py-2 rounded-full text-sm font-medium bg-gray-900 text-white dark:bg-yellow-400 dark:text-black"
+            className="
+              px-4 py-2 rounded-full text-sm font-medium
+              bg-gray-900 text-white
+              dark:bg-yellow-400 dark:text-black
+            "
           >
             {theme === "dark" ? "☀ Light" : "🌙 Dark"}
           </button>
 
-          <Link to="/signin" className="px-4 py-2 bg-blue-600 text-white rounded-lg">
+          <Link
+            to="/signin"
+            className="px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700"
+          >
             Sign In
           </Link>
-          <Link to="/signup" className="px-4 py-2 bg-white/70 dark:bg-gray-700 text-gray-900 dark:text-white border rounded-lg">
+
+          <Link
+            to="/signup"
+            className="
+              px-4 py-2 rounded-full text-sm font-medium
+              bg-white/70 dark:bg-gray-800/70
+              border border-white/30 dark:border-white/10
+            "
+          >
             Sign Up
           </Link>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
-        <button className="md:hidden text-3xl" onClick={() => setMenuOpen(!menuOpen)}>
+        {/* MOBILE TOGGLE */}
+        <button
+          className="md:hidden text-3xl text-gray-900 dark:text-white"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           {menuOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 px-6 pb-6 pt-4 text-lg space-y-5">
+        <div
+          className="
+            md:hidden px-6 pb-6 pt-4 space-y-3
+            bg-white/70 dark:bg-black/60
+            backdrop-blur-xl rounded-b-xl
+          "
+        >
+          <NavLink to="/" end className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Home</NavLink>
+          <NavLink to="/about" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>About</NavLink>
+          <NavLink to="/contact" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Contact</NavLink>
+          <NavLink to="/faq" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>FAQ</NavLink>
 
-          <NavLink to="/" className={getNavClass} end>Home</NavLink>
-          <NavLink to="/about" className={getNavClass}>About</NavLink>
-          <NavLink to="/contact" className={getNavClass}>Contact</NavLink>
-          <NavLink to="/faq" className={getNavClass}>FAQ</NavLink>
+          <hr className="border-gray-200 dark:border-gray-700 my-2" />
 
-          <hr className="border-gray-300 dark:border-gray-700" />
+          <NavLink to="/patient-counter" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Patient Counter</NavLink>
+          <NavLink to="/appointment" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Appointment</NavLink>
+          <NavLink to="/assignment/patients" className={(nav) => `${getNavClass(nav)} block w-full text-lg py-3 px-3 rounded-md`}>Patients</NavLink>
 
-          <NavLink to="/patient-counter" className={getNavClass}>
-            Patient Counter
-          </NavLink>
-          <NavLink to="/appointment" className={getNavClass}>
-            Appointment
-          </NavLink>
+          <hr className="border-gray-200 dark:border-gray-700 my-2" />
 
-          <hr className="border-gray-300 dark:border-gray-700" />
-
-          <NavLink to="/assignment/patients" className={getNavClass}>
-            Patients
-          </NavLink>
-
-          <hr className="border-gray-300 dark:border-gray-700" />
-
-          <Link to="/signin">Sign In</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/signin" className="block w-full py-3 px-3 rounded-md text-base font-medium hover:bg-white/20 dark:hover:bg-gray-800/30">Sign In</Link>
+          <Link to="/signup" className="block w-full py-3 px-3 rounded-md bg-white/80 dark:bg-gray-700 text-gray-900 dark:text-white text-center font-medium">Sign Up</Link>
 
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="w-full py-3 rounded-lg bg-gray-900 dark:bg-yellow-400 text-white dark:text-black"
+            className="w-full py-3 rounded-lg bg-gray-900 text-white dark:bg-yellow-400 dark:text-black"
           >
             {theme === "dark" ? "☀ Light" : "🌙 Dark"}
           </button>
