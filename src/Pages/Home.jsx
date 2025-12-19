@@ -45,7 +45,7 @@ export default function Home() {
 
         <div className="flex justify-center mb-6">
           <Link
-            to="/appointment"
+            to="/appointment#appointment-form"
             className="px-8 py-3 bg-gray-900 hover:bg-gray-700 
                        text-white rounded-full shadow-lg inline-block
                        dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-black"
@@ -158,7 +158,7 @@ export default function Home() {
         </p>
 
         <Link
-          to="/appointment"
+          to="/appointment#appointment-form"
           className="px-10 py-3 bg-gray-900 hover:bg-gray-700 
                      text-white rounded-full shadow-lg inline-block
                      dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-black"

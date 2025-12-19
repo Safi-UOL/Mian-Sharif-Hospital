@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ScrollReveal from "../components/common/ScrollReveal";
 
 export default function AppointmentForm() {
@@ -7,6 +7,22 @@ export default function AppointmentForm() {
   const [phone, setPhone] = useState("");
   const [disease, setDisease] = useState("");
   const [date, setDate] = useState("");
+
+  useEffect(() => {
+    const scrollToForm = () => {
+      if (typeof window !== 'undefined' && window.location.hash === '#appointment-form') {
+        const el = document.getElementById('appointment-form');
+        if (el) {
+          // small timeout to ensure layout is ready then smooth scroll
+          setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
+      }
+    };
+
+    scrollToForm();
+    window.addEventListener('hashchange', scrollToForm);
+    return () => window.removeEventListener('hashchange', scrollToForm);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +62,7 @@ export default function AppointmentForm() {
 
       {/* FORM CARD */}
       <ScrollReveal direction="right">
-        <section className="flex justify-center px-6 mb-16">
+        <section id="appointment-form" className="flex justify-center px-6 mb-16">
           <div className="w-full max-w-md bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl shadow-xl p-8 border border-white/40 dark:border-gray-700">
 
             <form onSubmit={handleSubmit} className="space-y-5">

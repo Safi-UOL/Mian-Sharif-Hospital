@@ -18,7 +18,7 @@ export default function HeroSection() {
 
         {/* BUTTONS */}
         <div className="mt-8 flex justify-center gap-4">
-          <Link to="/appointment" className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 text-white rounded-full shadow-lg transition-all">
+          <Link to="/appointment#appointment-form" className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 text-white rounded-full shadow-lg transition-all">
             Book Appointment
           </Link>
           <button className="px-8 py-3 border border-emerald-600 text-emerald-600 dark:text-emerald-400 
