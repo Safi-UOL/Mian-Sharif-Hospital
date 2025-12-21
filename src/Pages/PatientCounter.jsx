@@ -8,7 +8,7 @@ export default function PatientCounter() {
     <div className="pt-20 pb-20 text-gray-900 dark:text-gray-100">
       
       {/* HEADER WITH SCROLL REVEAL */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="text-center max-w-3xl mx-auto mb-16 px-6">
           <h1 className="text-4xl font-semibold mb-4 tracking-tight animate-soft-blink">
             Daily Patient Counter
@@ -20,7 +20,7 @@ export default function PatientCounter() {
       </ScrollReveal>
 
       {/* COUNTER CARD WITH SCROLL REVEAL */}
-      <ScrollReveal direction="right">
+      <ScrollReveal>
         <section className="flex justify-center px-6 mb-16">
           <div className="w-full max-w-md bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl shadow-xl p-8 border border-white/40 dark:border-gray-700">
 
@@ -63,7 +63,7 @@ export default function PatientCounter() {
       </ScrollReveal>
 
       {/* INFO SECTION */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="text-center max-w-3xl mx-auto px-6">
           <h2 className="text-2xl font-semibold mb-6">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-6">

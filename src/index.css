@@ -147,7 +147,7 @@ html.dark body {
 }
 
 /* =======================================
-   SCROLL REVEAL ANIMATIONS (LEFT/RIGHT)
+   SCROLL REVEAL ANIMATIONS (LEFT ONLY)
    ======================================= */
 @keyframes slideInLeft {
   from {
@@ -160,23 +160,8 @@ html.dark body {
   }
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 .animate-slide-in-left {
   animation: slideInLeft 0.7s ease-out;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.7s ease-out;
 }
 
 /* =======================================

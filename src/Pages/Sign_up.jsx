@@ -1,15 +1,47 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 import ScrollReveal from "../components/common/ScrollReveal";
 import signupImg from "../assets/Images/sign-up.jpg";
 
 export default function Sign_up() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Account created successfully!");
+      navigate("/signin");
+    } catch (err) {
+      setError(err.message || "Failed to create account");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="pt-16 pb-20 min-h-screen flex justify-center items-center px-6 text-gray-900 dark:text-gray-100">
 
       <div className="w-full max-w-4xl grid md:grid-cols-2 gap-12">
 
         {/* LEFT INFO CARD */}
-        <ScrollReveal direction="left">
+        <ScrollReveal >
         <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
             p-10 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
 
@@ -34,7 +66,7 @@ export default function Sign_up() {
         </ScrollReveal>
 
         {/* RIGHT SIGN UP FORM */}
-        <ScrollReveal direction="right">
+        <ScrollReveal>
         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl 
             p-10 rounded-2xl shadow-2xl border border-white/50 dark:border-gray-700">
 
@@ -43,13 +75,17 @@ export default function Sign_up() {
             Fill in your details to continue
           </p>
 
-          <div className="space-y-6">
+          {error && <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg text-sm">{error}</div>}
+
+          <form onSubmit={handleSignUp} className="space-y-6">
 
             {/* FULL NAME */}
             <div>
               <label className="text-sm opacity-80">Full Name</label>
               <input
                 type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 placeholder="Enter your full name"
                 className="w-full p-3 rounded-lg bg-gray-100 dark:bg-gray-700 
                   border border-gray-300 dark:border-gray-600 outline-none 
@@ -62,6 +98,9 @@ export default function Sign_up() {
               <label className="text-sm opacity-80">Email Address</label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 placeholder="example@gmail.com"
                 className="w-full p-3 rounded-lg bg-gray-100 dark:bg-gray-700 
                   border border-gray-300 dark:border-gray-600 outline-none 
@@ -74,6 +113,9 @@ export default function Sign_up() {
               <label className="text-sm opacity-80">Password</label>
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
                 placeholder="Enter your password"
                 className="w-full p-3 rounded-lg bg-gray-100 dark:bg-gray-700 
                   border border-gray-300 dark:border-gray-600 outline-none 
@@ -86,6 +128,9 @@ export default function Sign_up() {
               <label className="text-sm opacity-80">Confirm Password</label>
               <input
                 type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
                 placeholder="Re-enter your password"
                 className="w-full p-3 rounded-lg bg-gray-100 dark:bg-gray-700 
                   border border-gray-300 dark:border-gray-600 outline-none
@@ -95,13 +140,15 @@ export default function Sign_up() {
 
             {/* SIGN UP BUTTON */}
             <button
+              type="submit"
+              disabled={loading}
               className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white 
-                rounded-lg shadow-lg transition-all font-medium"
+                rounded-lg shadow-lg transition-all font-medium disabled:opacity-50"
             >
-              Create Account
+              {loading ? "Creating..." : "Create Account"}
             </button>
 
-            {/* LOGIN LINK FIXED */}
+            {/* LOGIN LINK */}
             <p className="text-center text-sm pt-4">
               Already have an account?{" "}
               <Link
@@ -112,7 +159,7 @@ export default function Sign_up() {
               </Link>
             </p>
 
-          </div>
+          </form>
         </div>
         </ScrollReveal>
       </div>

@@ -53,7 +53,7 @@ export default function Faq() {
   <div className="pt-30 pb-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
       <section className="text-center max-w-3xl mx-auto mb-16 px-6">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Frequently Asked Questions
@@ -68,7 +68,7 @@ export default function Faq() {
       {/* FAQ CARDS */}
       <section className="max-w-4xl mx-auto px-6 space-y-6">
         {faqs.map((item, i) => (
-          <ScrollReveal key={i} direction={i % 2 === 0 ? "left" : "right"}>
+          <ScrollReveal key={i}>
           <div
             className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-6 
             rounded-xl shadow-lg border border-white/40 dark:border-gray-700"
@@ -81,7 +81,7 @@ export default function Faq() {
       </section>
 
       {/* ADDITIONAL INFO */}
-      <ScrollReveal direction="right">
+      <ScrollReveal>
       <section className="mt-20 max-w-4xl mx-auto">
         <h2 className="text-3xl font-semibold mb-6 text-center">
           Additional Information
@@ -110,7 +110,7 @@ export default function Faq() {
       </ScrollReveal>
 
       {/* CTA */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
       <section className="mt-20 text-center max-w-3xl mx-auto">
         <h2 className="text-3xl font-semibold mb-4">Still Have Questions?</h2>
         <p className="text-lg opacity-90 mb-6">

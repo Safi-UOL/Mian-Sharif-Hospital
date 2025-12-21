@@ -12,7 +12,7 @@ export default function Home() {
     <div className="pt-4 pb-0 text-gray-900 dark:text-gray-100">
 
       {/* ===== TOP LOGO + NAME ===== */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="px-6 md:px-20 text-center mb-10">
           <div className="flex flex-col items-center justify-center mb-3">
             <img
@@ -82,7 +82,7 @@ export default function Home() {
             ["Cardiology", "ECG, cardiac risk assessment, hypertension & diabetes management."],
             ["Dermatology", "Acne care, pigmentation, laser treatment, PRP, hydrafacial."]
           ].map(([title, desc], idx) => (
-            <ScrollReveal key={title} direction={idx % 2 === 0 ? "left" : "right"}>
+            <ScrollReveal key={title}>
               <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50 h-full flex flex-col">
                 <h3 className="text-xl font-medium mb-2">{title}</h3>
                 <p className="opacity-90">{desc}</p>
@@ -106,7 +106,7 @@ export default function Home() {
             [drAhmad, "Dr. Ahmad Hammad", "Cardiologist (MBBS, FCPS)", "Heart specialist", "text-red-600 dark:text-red-400"],
             [drHafsa, "Dr. Hafsa Hammad", "Skin Specialist (MBBS)", "Dermatology care", "text-purple-600 dark:text-purple-400"]
           ].map(([img, name, role, exp, color], idx) => (
-            <ScrollReveal key={name} direction={idx % 2 === 0 ? "left" : "right"}>
+            <ScrollReveal key={name}>
               <div className="p-6 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50 h-full flex flex-col">
                 <div className="w-full h-40 rounded-lg overflow-hidden mb-4">
                   <img
@@ -138,7 +138,7 @@ export default function Home() {
             ["Standard Medical Practice", "Evidence-based diagnosis."],
             ["Patient-Focused Approach", "Comfort, communication & trust."]
           ].map(([title, desc], idx) => (
-            <ScrollReveal key={title} direction={idx % 2 === 0 ? "left" : "right"}>
+            <ScrollReveal key={title}>
               <div className="p-8 rounded-xl shadow-lg bg-white/50 dark:bg-gray-800/50 h-full flex flex-col">
                 <h3 className="text-xl font-medium mb-2">{title}</h3>
                 <p className="opacity-80">{desc}</p>

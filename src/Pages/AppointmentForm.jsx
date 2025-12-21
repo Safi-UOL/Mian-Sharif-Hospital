@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 import ScrollReveal from "../components/common/ScrollReveal";
 
 export default function AppointmentForm() {
@@ -7,6 +9,8 @@ export default function AppointmentForm() {
   const [phone, setPhone] = useState("");
   const [disease, setDisease] = useState("");
   const [date, setDate] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const scrollToForm = () => {
@@ -37,32 +41,42 @@ export default function AppointmentForm() {
     return () => window.removeEventListener('hashchange', scrollToForm);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    const appointmentData = {
-      name,
-      age,
-      phone,
-      disease,
-      date,
-    };
-
-    console.log("Appointment Data:", appointmentData);
-    alert("Appointment booked successfully!");
-
-    setName("");
-    setAge("");
-    setPhone("");
-    setDisease("");
-    setDate("");
+    try {
+      await addDoc(collection(db, "appointments"), {
+        name,
+        age: parseInt(age),
+        phone,
+        disease,
+        date,
+        createdAt: serverTimestamp(),
+        status: "pending"
+      });
+      
+      alert("Appointment booked successfully! Our team will contact you shortly.");
+      
+      setName("");
+      setAge("");
+      setPhone("");
+      setDisease("");
+      setDate("");
+    } catch (err) {
+      setError(err.message || "Failed to book appointment. Please try again.");
+      console.error("Error booking appointment:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="pt-20 pb-20 text-gray-900 dark:text-gray-100">
       
       {/* HEADER */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="text-center max-w-3xl mx-auto mb-16 px-6">
           <h1 className="text-4xl font-semibold mb-4 tracking-tight">
             Book Your Appointment
@@ -74,9 +88,11 @@ export default function AppointmentForm() {
       </ScrollReveal>
 
       {/* FORM CARD */}
-      <ScrollReveal direction="right">
+      <ScrollReveal>
         <section id="appointment-form" className="flex justify-center px-6 mb-16">
           <div className="w-full max-w-md bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl shadow-xl p-8 border border-white/40 dark:border-gray-700">
+
+            {error && <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg text-sm">{error}</div>}
 
             <form onSubmit={handleSubmit} className="space-y-5">
 
@@ -126,9 +142,10 @@ export default function AppointmentForm() {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 text-white font-semibold transition shadow-lg"
+                disabled={loading}
+                className="w-full py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 text-white font-semibold transition shadow-lg disabled:opacity-50"
               >
-                Book Appointment
+                {loading ? "Booking..." : "Book Appointment"}
               </button>
 
             </form>
@@ -137,7 +154,7 @@ export default function AppointmentForm() {
       </ScrollReveal>
 
       {/* INFO SECTION */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="text-center max-w-3xl mx-auto px-6">
           <h2 className="text-2xl font-semibold mb-6">Why Book With Us?</h2>
           <div className="grid md:grid-cols-3 gap-6">

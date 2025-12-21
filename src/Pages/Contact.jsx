@@ -12,7 +12,7 @@ export default function Contact() {
   <div className="pt-30 pb-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
       <section className="text-center max-w-3xl mx-auto mb-16 px-6">
         <h1 className="text-4xl font-semibold mb-4 tracking-tight">
           Contact Our Hospital
@@ -28,7 +28,7 @@ export default function Contact() {
       <section className="grid md:grid-cols-2 gap-12 mb-20 max-w-6xl mx-auto px-6">
 
         {/* LEFT SIDE — CONTACT DETAILS */}
-        <ScrollReveal direction="left">
+        <ScrollReveal >
         <div
           id="contact-details"
           className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
@@ -80,7 +80,7 @@ export default function Contact() {
         </ScrollReveal>
 
         {/* RIGHT SIDE — CONTACT FORM */}
-        <ScrollReveal direction="right">
+        <ScrollReveal>
         <div
           className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl 
           p-8 rounded-2xl shadow-lg border border-white/40 dark:border-gray-700"
@@ -138,7 +138,7 @@ export default function Contact() {
       </section>
 
       {/* MAP SECTION */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
       <section className="max-w-5xl mx-auto mb-20">
         <h2 className="text-3xl font-medium text-center mb-6">Location Map</h2>
 

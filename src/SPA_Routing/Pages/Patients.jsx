@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  serverTimestamp,
+  query,
+  orderBy,
+} from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 import ScrollReveal from "../../components/common/ScrollReveal";
 
 export default function Patients() {
-  const [patients, setPatients] = useState([
-    { id: 1, name: "Ali", age: 30, disease: "Fever", phone: "0300-1111111", date: "2024-12-01" },
-    { id: 2, name: "Ahmed", age: 45, disease: "Diabetes", phone: "0300-2222222", date: "2024-12-05" },
-  ]);
+  const [patients, setPatients] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -19,27 +30,49 @@ export default function Patients() {
     date: "",
   });
 
-  // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  // Real-time listener for Firestore
+  useEffect(() => {
+    setLoading(true);
+    const q = query(collection(db, "patients"), orderBy("createdAt", "desc"));
+    
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPatients(data);
+        setLoading(false);
+      },
+      (err) => {
+        setError(err.message);
+        setLoading(false);
+      }
+    );
 
-  // Add new patient
-  const handleAddPatient = (e) => {
+    return () => unsubscribe();
+  }, []);
+
+  // Add new patient to Firestore
+  const handleAddPatient = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.age && formData.disease && formData.phone && formData.date) {
-      const newPatient = {
-        id: patients.length > 0 ? Math.max(...patients.map((p) => p.id)) + 1 : 1,
+    if (!formData.name || !formData.age || !formData.disease || !formData.phone || !formData.date) {
+      setError("All fields are required");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "patients"), {
         ...formData,
-      };
-      setPatients([...patients, newPatient]);
+        age: parseInt(formData.age),
+        createdAt: serverTimestamp(),
+      });
       setFormData({ name: "", age: "", disease: "", phone: "", date: "" });
       setShowForm(false);
       alert("Patient added successfully!");
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -51,40 +84,55 @@ export default function Patients() {
     setSelectedPatientId(null);
   };
 
-  // Update patient
-  const handleUpdatePatient = (e) => {
+  // Update patient in Firestore
+  const handleUpdatePatient = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.age && formData.disease && formData.phone && formData.date) {
-      setPatients(
-        patients.map((p) =>
-          p.id === editingId
-            ? { id: p.id, ...formData }
-            : p
-        )
-      );
+    if (!formData.name || !formData.age || !formData.disease || !formData.phone || !formData.date) {
+      setError("All fields are required");
+      return;
+    }
+
+    try {
+      const patientRef = doc(db, "patients", editingId);
+      await updateDoc(patientRef, {
+        ...formData,
+        age: parseInt(formData.age),
+        updatedAt: serverTimestamp(),
+      });
       setFormData({ name: "", age: "", disease: "", phone: "", date: "" });
       setEditingId(null);
       setShowForm(false);
       alert("Patient updated successfully!");
+    } catch (err) {
+      setError(err.message);
     }
   };
 
-  // Delete patient
-  const handleDeletePatient = (id) => {
+  // Delete patient from Firestore
+  const handleDeletePatient = async (id) => {
     if (confirm("Are you sure you want to delete this patient?")) {
-      setPatients(patients.filter((p) => p.id !== id));
-      setSelectedPatientId(null);
-      alert("Patient deleted successfully!");
+      try {
+        await deleteDoc(doc(db, "patients", id));
+        setSelectedPatientId(null);
+        alert("Patient deleted successfully!");
+      } catch (err) {
+        setError(err.message);
+      }
     }
   };
 
-  // View patient details
-  const selectedPatient = patients.find((p) => p.id === selectedPatientId);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="pt-20 pb-20 px-6 md:px-20 text-gray-900 dark:text-gray-100 min-h-screen">
       
-      <ScrollReveal direction="left">
+      <ScrollReveal>
         <section className="text-center max-w-3xl mx-auto mb-12">
           <h1 className="text-4xl font-semibold mb-4 tracking-tight">
             Patient Management System
@@ -98,7 +146,7 @@ export default function Patients() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
 
         {/* LEFT: Patients List */}
-        <ScrollReveal direction="left">
+        <ScrollReveal>
           <div className="md:col-span-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-semibold">All Patients ({patients.length})</h2>
@@ -107,6 +155,7 @@ export default function Patients() {
                   setShowForm(true);
                   setEditingId(null);
                   setFormData({ name: "", age: "", disease: "", phone: "", date: "" });
+                  setError("");
                 }}
                 className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition"
               >
@@ -114,7 +163,13 @@ export default function Patients() {
               </button>
             </div>
 
+            {loading && <p className="text-sm opacity-70">Loading patients...</p>}
+            {error && <p className="text-sm text-red-600 dark:text-red-400 mb-3">{error}</p>}
+
             <div className="space-y-3 max-h-96 overflow-y-auto">
+              {patients.length === 0 && !loading && (
+                <p className="text-sm opacity-70 text-center py-4">No patients yet. Add one to get started!</p>
+              )}
               {patients.map((patient) => (
                 <div
                   key={patient.id}
@@ -127,7 +182,7 @@ export default function Patients() {
                 >
                   <p className="font-semibold text-lg">{patient.name}</p>
                   <p className="text-sm opacity-80">{patient.disease}</p>
-                  <p className="text-xs opacity-70">ID: {patient.id}</p>
+                  <p className="text-xs opacity-70">Age: {patient.age}</p>
                 </div>
               ))}
             </div>
@@ -136,7 +191,7 @@ export default function Patients() {
 
         {/* MIDDLE: Form (Create/Edit) */}
         {showForm && (
-          <ScrollReveal direction="right">
+          <ScrollReveal>
             <div className="md:col-span-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
               <h2 className="text-2xl font-semibold mb-6">
                 {editingId ? "Edit Patient" : "Add New Patient"}
@@ -232,57 +287,56 @@ export default function Patients() {
         )}
 
         {/* RIGHT: Patient Details */}
-        {selectedPatient && !showForm && (
-          <ScrollReveal direction="right">
+        {selectedPatientId && !showForm && (
+          <ScrollReveal>
             <div className="md:col-span-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700">
               <h2 className="text-2xl font-semibold mb-6">Patient Details</h2>
 
-              <div className="space-y-4">
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <p className="text-sm opacity-70">Patient ID</p>
-                  <p className="text-xl font-semibold">{selectedPatient.id}</p>
-                </div>
+              {patients.find((p) => p.id === selectedPatientId) ? (
+                <div className="space-y-4">
+                  <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                    <p className="text-sm opacity-70">Full Name</p>
+                    <p className="text-xl font-semibold">{patients.find((p) => p.id === selectedPatientId).name}</p>
+                  </div>
 
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <p className="text-sm opacity-70">Full Name</p>
-                  <p className="text-xl font-semibold">{selectedPatient.name}</p>
-                </div>
+                  <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                    <p className="text-sm opacity-70">Age</p>
+                    <p className="text-xl font-semibold">{patients.find((p) => p.id === selectedPatientId).age} years</p>
+                  </div>
 
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <p className="text-sm opacity-70">Age</p>
-                  <p className="text-xl font-semibold">{selectedPatient.age} years</p>
-                </div>
+                  <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                    <p className="text-sm opacity-70">Disease/Condition</p>
+                    <p className="text-xl font-semibold">{patients.find((p) => p.id === selectedPatientId).disease}</p>
+                  </div>
 
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <p className="text-sm opacity-70">Disease/Condition</p>
-                  <p className="text-xl font-semibold">{selectedPatient.disease}</p>
-                </div>
+                  <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                    <p className="text-sm opacity-70">Phone Number</p>
+                    <p className="text-xl font-semibold">{patients.find((p) => p.id === selectedPatientId).phone}</p>
+                  </div>
 
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <p className="text-sm opacity-70">Phone Number</p>
-                  <p className="text-xl font-semibold">{selectedPatient.phone}</p>
-                </div>
+                  <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                    <p className="text-sm opacity-70">Appointment Date</p>
+                    <p className="text-xl font-semibold">{patients.find((p) => p.id === selectedPatientId).date}</p>
+                  </div>
 
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <p className="text-sm opacity-70">Registration Date</p>
-                  <p className="text-xl font-semibold">{selectedPatient.date}</p>
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      onClick={() => handleEditPatient(patients.find((p) => p.id === selectedPatientId))}
+                      className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition"
+                    >
+                      Edit Patient
+                    </button>
+                    <button
+                      onClick={() => handleDeletePatient(selectedPatientId)}
+                      className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition"
+                    >
+                      Delete Patient
+                    </button>
+                  </div>
                 </div>
-
-                <div className="flex gap-3 pt-4">
-                  <button
-                    onClick={() => handleEditPatient(selectedPatient)}
-                    className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition"
-                  >
-                    Edit Patient
-                  </button>
-                  <button
-                    onClick={() => handleDeletePatient(selectedPatient.id)}
-                    className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition"
-                  >
-                    Delete Patient
-                  </button>
-                </div>
-              </div>
+              ) : (
+                <p className="text-sm opacity-70">Patient not found</p>
+              )}
             </div>
           </ScrollReveal>
         )}

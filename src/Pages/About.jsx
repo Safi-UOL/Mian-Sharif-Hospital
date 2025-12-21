@@ -9,7 +9,7 @@ export default function About() {
     <div className="pt-30 pb-20 text-gray-900 dark:text-gray-100">
 
       {/* HEADER SECTION */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl font-semibold mb-4 tracking-tight">
             About Our Hospital
@@ -26,7 +26,7 @@ export default function About() {
       <section className="grid md:grid-cols-2 gap-10 mb-20 max-w-6xl mx-auto px-6">
 
         {/* DOCTOR 1 — DR ASIF MAHMOOD */}
-        <ScrollReveal direction="left">
+        <ScrollReveal >
           <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700 h-full flex flex-col">
             <div className="w-full h-56 rounded-xl overflow-hidden mb-6 bg-gray-300 dark:bg-gray-700">
               <img
@@ -47,7 +47,7 @@ export default function About() {
         </ScrollReveal>
 
         {/* DOCTOR 2 — DR RABIA MANZOOR */}
-        <ScrollReveal direction="right">
+        <ScrollReveal>
           <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700 h-full flex flex-col">
             <div className="w-full h-56 rounded-xl overflow-hidden mb-6 bg-gray-300 dark:bg-gray-700">
               <img
@@ -68,7 +68,7 @@ export default function About() {
         </ScrollReveal>
 
         {/* DOCTOR 3 — DR AHMAD HAMMAD */}
-        <ScrollReveal direction="left">
+        <ScrollReveal >
           <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700 h-full flex flex-col">
             <div className="w-full h-56 rounded-xl overflow-hidden mb-6 bg-gray-300 dark:bg-gray-700">
               <img
@@ -89,7 +89,7 @@ export default function About() {
         </ScrollReveal>
 
         {/* DOCTOR 4 — DR HAFSA HAMMAD */}
-        <ScrollReveal direction="right">
+        <ScrollReveal>
           <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/40 dark:border-gray-700 h-full flex flex-col">
             <div className="w-full h-56 rounded-xl overflow-hidden mb-6 bg-gray-300 dark:bg-gray-700">
               <img
@@ -111,7 +111,7 @@ export default function About() {
       </section>
 
       {/* MISSION SECTION */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="max-w-4xl mx-auto mb-20 px-6">
           <h2 className="text-3xl font-semibold mb-6 text-center">Our Mission</h2>
           <p className="leading-relaxed text-lg opacity-90">
@@ -121,7 +121,7 @@ export default function About() {
       </ScrollReveal>
 
       {/* JOURNEY SECTION */}
-      <ScrollReveal direction="right">
+      <ScrollReveal>
         <section className="mb-20 max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-semibold mb-10 text-center">Our Clinical Journey</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -152,7 +152,7 @@ export default function About() {
       </ScrollReveal>
 
       {/* CLOSING SECTION */}
-      <ScrollReveal direction="left">
+      <ScrollReveal >
         <section className="text-center max-w-3xl mx-auto px-6">
           <h2 className="text-3xl font-semibold mb-6">Why Choose Us?</h2>
           <p className="leading-relaxed text-lg opacity-90">
